@@ -167,7 +167,7 @@ function createConnection(){
       user: `${process.env.user}`,
       password: `${process.env.password}`,
       database: `${process.env.database}`,
-      connectTimeout: 20000,
+      connectTimeout: 60000,
     });
     
     let attempts = 0;
