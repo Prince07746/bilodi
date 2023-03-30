@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">  
+<script src="/mainJS/aboutJs/about.js"></script>
+<script src="/comonfile/logbuttons.js"></script>
+<link rel="stylesheet" href="/computercss/aboutcss/about.css">
+<link rel="stylesheet" href="/phonecss/aboutcss/about.css">
+
+    </head>
+    <style>
+      body,html{
+        background-color: white;
+      }
+      #nav-bar{
+    color: white;
+    padding: 8px;
+    opacity: 85%;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+  }
+  .news{
+    margin-bottom: 90px;
+    text-align: left;
+    margin: 10px;
+
+  }
+  .heaad{
+    background-color: black;
+  }
+  .present-news{
+  width: 100%;
+}
+.container0{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.news0{
+  border-radius: 10px;
+  width: 300px;
+  height: auto;
+  margin: 10px;
+}
+.news0 img{
+  width: 300px;
+  height: 210px;
+  border-radius: 5px;
+}
+
+.news0 a{
+  text-decoration: none;
+  color: black;
+}
+.news0 h2{
+  color: black;
+  font-weight: 200;
+}
+.news0 p{
+  color: black;
+}
+.news0 .category{
+  color: white;
+  background-color: green;
+  padding: 10px;
+
+}
+
+    </style>
+
+    <body>
+
+<div class="head">
+ <div class="nav-bar" id="nav-bar">
+        <div>
+            <span class="list-one">Bilodi Charity Organisation</span>
+        </div>
+        <div>
+        <ul>
+            
+            <li><a href="/">Home</a></li>
+            <li><a href="/About">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </div>
+    <div style="display: flex; flex-direction: row;" id="button-top">
+        <form method="get" action="logoutRequest" id="logout">
+            <button class="btn btn-info" type="submit" onclick="logout()">Logout</button>
+            </form>
+            <form method="get" action="donateRequest" id="dn">
+              <button class="btn btn-success" type="submit">Donate</button>
+          </form>
+    </div>
+    </div>
+<center>
+<div class="news">
+  
+<img src="/bilodiImages/<%= imageNews %>" id="image-news">
+<h3><%= titleNews %></h3>
+<p><i><%= date %></i></p>
+<h5><%= description %></h5>
+<p><%= more  %></p>
+</div>
+</center>
+
+<section class="present-news">
+  <h2 style="color: green">Fundraising Project Achieves Impactful Results</h2>
+  <div class="container0">
+    <div class="news0" id="news0">
+    <a  href="/news/<%= successfull1_title %>">
+      <img src="/bilodiImages/<%= successfull1_img %>" alt="News 1">
+
+      <h4><%= successfull1_title %></h4>
+      <p><%= successfull1_description %></p>
+      <p class="category"><%= successfull1_category %></p>
+
+    </a>
+    </div>
+
+    <div class="news0" id="news0">
+    <a href="/news/<%= successfull2_title %>">
+      <img src="/bilodiImages/<%= successfull2_img %>" alt="News 2">
+      <h4><%= successfull2_title %></h4>
+      <p><%= successfull2_description %></p>
+      <p class="category"><%= successfull2_category %></p>
+    </a>
+    </div>
+
+    <div class="news0" id="news0">
+    <a  href="/news/<%= successfull3_title %>">
+      <img src="/bilodiImages/<%= successfull3_img %>" alt="News 3">
+      <h4><%= successfull3_title %></h4>
+      <p><%= successfull3_description %></p>
+      <p class="category"><%= successfull3_category %></p>
+    </a>
+    </div>
+
+    <div class="news0" id="news0">
+    <a class="news0" id="news0" href="/news/<%= successfull4_title %>">
+      <img src="/bilodiImages/<%= successfull4_img %>" alt="News 4">
+      <h4><%= successfull4_title %></h4>
+      <p><%= successfull4_description %></p>
+      <p class="category"><%= successfull4_category %></p>
+    </a>
+    </div>
+    <div class="news0" id="news0">
+    <a class="news0" id="news0" href="/news/<%= successfull5_title %>">
+      <img src="/bilodiImages/<%= successfull5_img %>" alt="News 5">
+      <h4><%= successfull5_title %></h4>
+      <p><%= successfull5_description %></p>
+      <p class="category"><%= successfull5_category %></p>
+    </a>
+    </div>
+    <div class="news0" id="news0">
+    <a class="news0" id="news0" href="/news/<%= successfull6_title %>">
+      <img src="/bilodiImages/<%= successfull6_img %>" alt="News 6">
+      <h4><%= successfull6_title %></h4>
+      <p><%= successfull6_description %></p>
+      <p class="category"><%= successfull6_category %></p>
+    </a>
+    </div>
+
+    </div>  
+
+
+</section>
+
+
+<div class="footer-page">
+    <footer>
+        <div class="footer-container">
+          <div class="footer-left">
+            <h3>Make a Donation</h3>
+            <p>Your donation can help change lives. Every little bit counts.</p>
+            <p>Don't forget that this website is for the BILODI ORGANISATION, a registered nonprofit organization committed to improving the lives of people in need.</p>
+          </div>
+          <div class="footer-right">
+            <button>Donate Now</button>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-bottom-left">
+            <h4>About Us</h4>
+            <p>BILODI ORGANISATION is a registered nonprofit organization committed to improving the lives of people in need. Learn more about our mission and work.</p>
+          </div>
+          <div class="footer-bottom-middle">
+            <h4>Get in Touch</h4>
+            <ul>
+                
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/donateRequest">Support Us</a></li>
+          <li><a href="/contact">Volunteer</a></li>
+            </ul>
+          </div>
+          <div class="footer-bottom-right">
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Use</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+      <footer class="footer2">
+        <div class="footer2-left">
+          <a href="#">Privacy Policy</a>
+          <span>|</span>
+          <a href="#">Terms of Use</a>
+        </div>
+        <div class="footer2-right">
+          <form action="join" method="get">
+            <label for="email">Subscribe Now:</label>
+            <button type="submit">Join</button>
+          </form>
+        </div>
+      </footer>
+    </div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+.file-system{
+border: solid gray 1px;
+width: 100%;
+text-align: center;
+background-color: gray;
+
+}
+
+#head-file{
+    color: white;
+    background-color: rgba(38, 32, 32, 0.667);
+}
+
+#listA{
+    text-decoration: none;
+    width: max-content;
+    background-color: white;
+    border-radius: 10px;
+}
+#listA li{
+    list-style: none;
+    margin-bottom: 5px;
+    background-color: yellowgreen;
+}
+#listA  li:hover{
+    background-color: white;
+    border-radius: 5px;
+}
+#listB{
+    text-decoration: none;
+    width: max-content;
+    background-color: white;
+    border-radius: 10px;
+}
+#listB  li:hover{
+    background-color: white;
+    border-radius: 5px;
+}
+#listB li{
+    list-style: none;
+    margin-bottom: 5px;
+    background-color: yellowgreen;
+}
+#listC{
+    text-decoration: none;
+    width: max-content;
+    background-color: white;
+    border-radius: 10px;
+}
+#listC li{
+    list-style: none;
+    margin: 5px;
+    background-color: yellowgreen;
+}
+#listC  li:hover{
+    background-color: white;
+    border-radius: 5px;
+}
+
+
+
+@media screen and (min-width: 800px){
+
+    .file-system{
+        border: solid gray 1px;
+        width: 100%;
+        text-align: center;
+        background-color: gray;
+        
+        }
+        
+        #head-file{
+            color: white;
+            background-color: rgba(38, 32, 32, 0.667);
+        }
+        li:hover{
+            background-color: white;
+        }
+        
+        #listA{
+            text-decoration: none;
+            width: 20%;
+            background-color: white;
+            border-radius: 10px;
+        }
+        #listA li{
+            list-style: none;
+            margin-bottom: 5px;
+            background-color: yellowgreen;
+            padding: 5px;
+        }
+        
+        #listA  li:hover{
+            background-color: white;
+        }
+
+        
+        #listB{
+            text-decoration: none;
+            width: 20%;
+            background-color: white;
+            border-radius: 10px;
+        }
+        #listB li{
+            list-style: none;
+            margin-bottom: 5px;
+            background-color: yellowgreen;
+            padding: 5px;
+        }
+        #listB  li:hover{
+            background-color: white;
+        }
+
+
+
+        #listC{
+            text-decoration: none;
+            width:20%;
+            background-color: white;
+            border-radius: 10px;
+        }
+        #listC li{
+            list-style: none;
+            margin: 5px;
+            background-color: yellowgreen;
+            padding: 5px;
+        }
+        #listC  li:hover{
+            background-color: white;
+        }
+        
+        
+}
+    

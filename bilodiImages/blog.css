@@ -1,0 +1,133 @@
+*{
+    background-color: rgb(195, 190, 190);
+    margin: 0;
+    padding: 0;
+}
+
+.firstContent{
+    background-color: white;
+    padding: 40px;
+}
+#head{
+    background-color: white;
+}
+#subHead{
+    background-color: white;
+}
+#text {
+    background-color: white;
+}
+.firstContent button{
+    background-color: pink;
+    padding: 10px;
+    border: none;
+}
+#secondhead{
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+.picFlex{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+}
+
+#figure{
+  margin-left: 50px;
+}
+#cap1{
+    width: 350px;
+
+}
+#cap1 p{
+    font-weight: bold;
+}
+#cap2{
+    width: 350px;
+}
+#cap2 p{
+    font-weight: bold;
+}
+
+#footer{
+    background-color: rgb(29, 30, 29);
+    color: black;
+  }
+  .inside{
+    background-color: rgba(38, 34, 34, 0.7);;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .inside p{
+    color: white;
+    background-color:  rgb(29, 30, 29);
+  }
+  .infoOne{
+    display: flex;
+    justify-content: space-evenly;
+    background-color:  rgb(29, 30, 29);
+  }
+  .infoOne p{
+    color: white;
+  }
+  .infoOne h4{
+    margin-right: 20px;
+    color: white;
+    background-color:  rgb(29, 30, 29);;
+  }
+  .infoTwo{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+  }
+  .nxt{
+    display: flex;
+    
+  }
+  .Flist ul{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    margin-left:10px ;
+    margin-right: 10px;
+  }
+  .Flist li{
+    list-style: none;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .Flist li:hover{
+    background-color: black;
+    color: white;
+    border-radius: 2.5px;
+    cursor: pointer;
+  }
+  .copywrite{
+    position: static;
+    font-size: x-small;
+    font-style: italic;
+  }
+  .one ul{
+    list-style: none;
+    font-size: small;
+  }
+  .two ul{
+    list-style: none;
+    font-size: small;
+  }
+  .three ul{
+    list-style: none;
+    font-size: small;
+  }
+  #Network{
+    border-radius: 10px;
+    background-color: green;
+    border: none;
+  }
+  
