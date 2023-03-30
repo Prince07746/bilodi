@@ -27,8 +27,6 @@ const formidable = require('formidable');
 // readline-sync
 const readlineSync = require('readline-sync');
 
-// comparison module
-const bcrypt = require('bcrypt');
 
 // html modification
 const cheerio = require('cheerio');
