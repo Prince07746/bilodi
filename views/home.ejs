@@ -32,9 +32,6 @@
     <form method="get" action="logoutRequest" id="logout">
       <button class="btn btn-info" type="submit" onclick="logout()">Logout</button>
       </form>
-      <form method="get" action="donateRequest" id="dn">
-        <button class="btn btn-success" type="submit">Donate</button>
-    </form>
 </div>
 </div>
 <div class="top-page">
@@ -47,9 +44,10 @@
 <div class="text-inside">
 <p>Our Charity Organization's Commitment to Collaboration</p>
       <p>At Bilodi charity organization, we believe that collaboration is key to achieving lasting change and empowering communities in need. That's why we work closely with local organizations and community members to identify their needs and create sustainable solutions together.</p>
-      <center>
-      <button class="btn btn-success"><%= account %></button>
-     </center>
+      <form method="get" action="donateRequest" id="dn">
+        <button class="btn btn-success" type="submit">Donate</button>
+    </form>
+     
     </div>
 </div>
 <center>

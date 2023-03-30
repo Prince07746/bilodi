@@ -160,7 +160,7 @@ margin-right: 20px;
   width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
-  transform: scale(.89);
+  transform: scale(1);
 }
 .news0{
   border: solid gray 1px;
@@ -217,9 +217,8 @@ margin-right: 20px;
 
 
 .NWS{
-  display: flex;
+  display: block;
   width: 100%;
-  transform: scale(.99);
 }
 
 
@@ -229,8 +228,8 @@ margin-right: 20px;
 
 .cont {
   display: block;
-  width: 40%;
-  transform: scale(.9);
+  width: 100%;
+  transform: scale(1);
 
 }
 
@@ -304,7 +303,7 @@ margin-right: 20px;
 .container1 {
   display: block;
   width:100%;
-  transform: scale(.9);
+  transform: scale(1);
 }
 
 .news {
