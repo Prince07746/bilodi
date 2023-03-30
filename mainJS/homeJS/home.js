@@ -1,6 +1,6 @@
 
 window.onload = function() {
-    alert('hello');
+
     var s0 = document.getElementById('nav-bar');
     var s1 = document.getElementById('word1');
     var s2 = document.getElementById('word2');
