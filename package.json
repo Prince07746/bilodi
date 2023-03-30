@@ -7,9 +7,9 @@
     "start": "node app.js"
   },
   "repository": {
-  "type": "git",
-  "url": ""
-},
+    "type": "git",
+    "url": ""
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -27,6 +27,7 @@
     "express-session": "^1.17.3",
     "formidable": "^2.1.1",
     "fs": "^0.0.1-security",
+    "generic-pool": "^3.9.0",
     "helmet": "^6.0.1",
     "memory-cache": "^0.2.0",
     "mysql": "^2.18.1",
