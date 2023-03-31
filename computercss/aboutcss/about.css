@@ -363,11 +363,8 @@ li {
   
 
 
-@media only screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {
   
-body{
-display: none;
-}
     .head{
         background-color: white;
         height: max-content;
