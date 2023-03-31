@@ -87,7 +87,6 @@ background: white;
 
 
 .content {
-  margin: 80px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
@@ -98,7 +97,7 @@ background: white;
 }
 
 .content h1, .content h2, .content p {
-  color: #333;
+  color: black;
 }
 
 .content img {
@@ -126,6 +125,7 @@ h1, h2 {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-weight: 700;
 }
 
 img {
@@ -190,6 +190,7 @@ li {
 .help-way p {
   text-align: center;
   margin-bottom: 20px;
+   font-weight: 600;
 }
 
 .help-way .btn {
