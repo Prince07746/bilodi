@@ -90,6 +90,7 @@ app.use(express.static(__dirname+'/pagesMain'));
 app.use(express.static(__dirname+'/pageContact'));
 app.use(express.static(__dirname+'/manager'));
 app.use(express.static(path.join(__dirname, 'postpage')));
+app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(__dirname));
 app.use(limiter);
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -169,7 +170,7 @@ function createConnection(){
       password: process.env.password,
       database: process.env.database,
      connectionLimit: 10,
-  timeout: 60000 // 1 minute
+  timeout: 120000 // 1 minute
     });
     
     // Test the connection pool
