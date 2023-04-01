@@ -29,12 +29,13 @@ background: white;
 
 /* the header page */
 .head{
+  width: 100%;
     background-color: white;
     height: max-content;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-
+    background-color: black;
 }
 #nav-bar{
     color: white;
@@ -42,7 +43,6 @@ background: white;
     opacity: 85%;
     display: none;
     justify-content: space-between;
-    background-color: black;
   }
   .nav-bar li{
     font-weight: bold;

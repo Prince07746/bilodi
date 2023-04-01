@@ -47,23 +47,24 @@ background: white;
 
 @media screen and (max-width: 800px){
 
-
+body{
+  width: 100%;
+}
     .head{
         background-color: white;
         height: max-content;
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
         margin-bottom: 10px;
+        width: 100%;
+        background-color: black;
     }
   
     #nav-bar{
+      width: 100%;
         color: white;
         padding: 10px;
         opacity: 85%;
         display: none;
         justify-content: space-between;
-        background-color: black;
         cursor: pointer;
       }
 
