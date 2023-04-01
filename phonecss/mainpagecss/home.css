@@ -110,7 +110,6 @@ html::-webkit-scrollbar{
   padding: 0;
 }
 .title-top{
-  padding-top: 20px;
   display: block;
 }
 #title-text{
@@ -132,15 +131,14 @@ margin-right: 20px;
 #logo-img{
   margin-top: 10px;
   width: 90%;
-  text-align: left;
 }
+
 #img-logo{
   position: relative;
   border: solid rgba(255, 255, 255, 0.212) 0px;
   width: 100%;
-  height: 250px;
+  height: 150px;
   border-radius: 10px;
-
 }
 
 
