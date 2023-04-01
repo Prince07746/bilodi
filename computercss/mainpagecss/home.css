@@ -63,13 +63,20 @@ body{
     font-size: medium;
     font-weight: bolder;
   }
+  .head{
+    background-color: white;
+    height: max-content;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: black;
+}
+
   #nav-bar{
     color: white;
     padding: 8px;
     opacity: 85%;
     display: none;
     justify-content: space-around;
-    background-color: black;
   }
   
   .nav-bar li{

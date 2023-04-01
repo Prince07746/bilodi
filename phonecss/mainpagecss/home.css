@@ -48,26 +48,20 @@ html::-webkit-scrollbar{
     width: 100%;
     height: max-content;
   }
-  .blur {
-    background-image: url("/bilodiImages/charity2.jpg");
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    background-size: cover;
-    background-attachment: fixed;
-    filter: blur(5px);
-  }
-
-
+  
   .list-one{
     color: rgb(31, 187, 31);
     font-size: medium;
     font-weight: bolder;
   }
 
+  .head{
+    background-color: white;
+    height: max-content;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: black;
+}
   #nav-bar{
     color: white;
     padding: 8px;
@@ -347,7 +341,18 @@ margin-right: 20px;
 #container3 {
   display: none;
 }
-
+.blur {
+    background-image: url("/bilodiImages/charity2.jpg");
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: blur(5px);
+  }
 
 .help-ways{
   display: block;
