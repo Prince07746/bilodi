@@ -28,14 +28,10 @@ background: white;
 
 
 /* the header page */
-.head{
+#head{
+  height: max-content;
   width: 100%;
-    background-color: white;
-    height: max-content;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: black;
+  background-color: black;
 }
 #nav-bar{
     color: white;

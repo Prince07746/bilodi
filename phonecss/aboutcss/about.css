@@ -50,13 +50,12 @@ background: white;
 body{
   width: 100%;
 }
-    .head{
-        background-color: white;
-        height: max-content;
-        margin-bottom: 10px;
-        width: 100%;
-        background-color: black;
-    }
+
+#head{
+  height: max-content;
+  width: 100%;
+  background-color: black;
+}
   
     #nav-bar{
       width: 100%;
