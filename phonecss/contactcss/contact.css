@@ -84,9 +84,14 @@ background: white;
     
       }
     
-    .nav-bar ul{
+      .nav-bar ul{
         display: flex;
         justify-content: space-between;
+        background-color: black;
+        border-radius: 10px;
+        padding: 10px;
+        border-right-style: dotted;
+        border-right: solid rgb(11, 155, 11) 4px;
     }
     
     .nav-bar li{
