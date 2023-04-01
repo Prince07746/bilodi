@@ -342,7 +342,7 @@ var login = `<!DOCTYPE html>
 		@media screen and (max-width: 800px) {
 
 			input[type="text"], input[type="password"], input[type="submit"] {
-				width: 50%; 
+				width: 100%; 
 			}
 
 
