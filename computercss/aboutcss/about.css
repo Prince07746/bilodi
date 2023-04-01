@@ -193,8 +193,8 @@ li {
 }
 
 #image-news{
-  width: 850px;
-  height: 550px;
+  width: 800px;
+  height: 750px;
   transform: scale(.9);
   border-radius: 5px;
 }
