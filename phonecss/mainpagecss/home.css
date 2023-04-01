@@ -56,9 +56,7 @@ html::-webkit-scrollbar{
   }
 
   #head{
-    background-color: white;
     height: max-content;
-    margin-bottom: 10px;
     width: 100%;
     background-color: black;
 }
