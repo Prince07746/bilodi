@@ -63,7 +63,7 @@ body{
     font-size: medium;
     font-weight: bolder;
   }
-  .head{
+  #head{
     background-color: white;
     height: max-content;
     margin-bottom: 10px;

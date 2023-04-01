@@ -55,7 +55,7 @@ html::-webkit-scrollbar{
     font-weight: bolder;
   }
 
-  .head{
+  #head{
     background-color: white;
     height: max-content;
     margin-bottom: 10px;
@@ -367,6 +367,7 @@ margin-right: 20px;
   margin-bottom: 20px;
   width: 100%;
   height: max-content;
+  background-color: white;
 }
 
 .help-way img {
