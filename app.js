@@ -90,7 +90,6 @@ app.use(express.static(__dirname+'/pagesMain'));
 app.use(express.static(__dirname+'/pageContact'));
 app.use(express.static(__dirname+'/manager'));
 app.use(express.static(path.join(__dirname, 'postpage')));
-app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(__dirname));
 app.use(limiter);
 app.use(bodyParser.urlencoded({ extended: true }));
