@@ -103,7 +103,7 @@ html::-webkit-scrollbar{
 
 
 .top-page{
-  background-image: url('/bilodiImages/bk.png');
+  background-color: rgb(10, 32, 10);
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
@@ -338,7 +338,7 @@ margin-right: 20px;
   display: none;
 }
 .blur {
-    background-image: url("/bilodiImages/charity2.jpg");
+  background-color: rgb(10, 32, 10);
     position: absolute;
     top: 0;
     left: 0;
@@ -402,10 +402,7 @@ margin-right: 20px;
 
     .footer-page{
       position: relative;
-      background-image: url('/bilodiImages/bk.png');
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
+      background-color: rgb(10, 32, 10);
     }
 
   .footer-container {
