@@ -383,10 +383,12 @@ color: white;
 }
 
 .news img {
-width: 100%;
+  width: 100%;
 height: 300px;
 object-fit: cover;
-border-radius: 5px;
+object-position:top;
+
+
 }
 
 .news h2 {
@@ -460,9 +462,11 @@ letter-spacing: 1px;
 }
 
 .help-way img {
-  width: 100%;
-  max-width: 200px;
-  margin-bottom: 10px;
+width: 100%;
+height: 200px;
+object-fit: cover;
+object-position:top;
+  
 }
 
 .help-way h3 {
