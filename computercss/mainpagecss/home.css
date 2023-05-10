@@ -220,7 +220,7 @@ color: white;
 }
 .news0{
   border-radius: 10px;
-  width: 30%;
+  width: 200px;
   height: auto;
   margin: 10px;
   background-color: white;
@@ -231,7 +231,7 @@ color: white;
   color: black;
 }
 .news0:hover{
-  transform: scale(.98);
+  transform: scale(.99);
 }
 .news0 img{
 width: 100%;
