@@ -215,7 +215,7 @@ color: white;
   width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
-  transform: scale(.89);
+  transform: scale(.99);
   background-color: rgb(10, 32, 10);
 }
 .news0{
@@ -235,8 +235,8 @@ color: white;
 }
 .news0 img{
 width: 100%;
-height: auto;
-object-fit:contain;
+height: 300px;
+object-fit: scale-down;
 object-position: center;
 }
 .news0 h2{
