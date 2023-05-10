@@ -239,7 +239,7 @@ color: white;
 }
 .news0 img{
 width: 100%;
-height: 310px;
+height: auto;
 object-fit:contain;
 object-position: center;
 }
