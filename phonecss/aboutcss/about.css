@@ -51,7 +51,7 @@ body{
   width: 100%;
 }
 
-#head{
+.head{
   height: max-content;
   width: 100%;
   background-color: black;

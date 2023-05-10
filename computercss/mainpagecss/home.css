@@ -46,7 +46,7 @@ body{
     background-repeat: no-repeat;
   }
   .blur {
-    background-image: url("/bilodiImages/charity2.jpg");
+    background-color: rgb(10, 32, 10);
     position: absolute;
     top: 0;
     left: 0;
@@ -149,7 +149,7 @@ color: white;
 }
 
 .top-page{
-  background-image: url('/bilodiImages/bk.png');
+  background-color: rgb(10, 32, 10);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -190,7 +190,7 @@ color: white;
 
 
 .bilodi-head{
-  background-image: url('/bilodiImages/bk.png');
+  background-color: rgb(10, 32, 10);
   padding: 50px;
 }
 .bilodi-head div{
@@ -216,10 +216,7 @@ color: white;
   overflow-x: scroll;
   overflow-y: hidden;
   transform: scale(.89);
-  
-  background-image: url('/bilodiImages/bk.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: rgb(10, 32, 10);
 }
 .news0{
   border: solid gray 1px;
@@ -497,10 +494,7 @@ letter-spacing: 1px;
 
 .footer-page{
   margin-top: 20px;
-  background-image: url('/bilodiImages/bk.png');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: rgb(10, 32, 10);
 }
 
 footer {
