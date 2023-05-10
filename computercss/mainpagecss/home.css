@@ -213,8 +213,7 @@ color: white;
 .container0{
   display: flex;
   width: 100%;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  flex-wrap: wrap;
   transform: scale(.99);
   background-color: rgb(10, 32, 10);
 }
