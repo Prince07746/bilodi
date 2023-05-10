@@ -217,7 +217,7 @@ color: white;
   overflow-y: hidden;
   transform: scale(.89);
   
-  background-image: url('/bilodiImages/bk.png');
+  background-color: rgb(17, 44, 17);
   background-repeat: no-repeat;
   background-size: cover;
 }
