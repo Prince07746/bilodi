@@ -151,6 +151,7 @@ margin-right: 20px;
   overflow-x: scroll;
   overflow-y: hidden;
   transform: scale(1);
+  background-color: white;
 }
 .news0{
   border: solid gray 1px;
