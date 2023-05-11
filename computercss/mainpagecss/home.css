@@ -215,7 +215,7 @@ color: white;
   width: 100%;
   flex-wrap: wrap;
   transform: scale(.99);
-  background-color: rgb(10, 32, 10);
+  background-color: white;
 }
 .news0{
   border-radius: 10px;
