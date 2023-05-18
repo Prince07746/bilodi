@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    <title>zarcom / manager</title>
+        
+    <link rel="icon" type="image/x-icon" href="/zarcoImages/zarco.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="about zarcom">
+<meta property="og:site_name" content="zarcom">
+<meta property="og:description" content="zarcom editer">
+
+<meta property="og:locale" content="en_UG">
+<meta name="description" content="read about zarcom and dirscover more about">
+<meta name="keywords" content="zarcom editer,modifier">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<link rel="stylesheet" href="/style/compcss.css">
+<link rel="stylesheet" href="/style/phone.css">
+<link rel="stylesheet" href="/style/news.css">
+
+
+<script src="/mainjs/home.js"></script>
+
+    </head>
+
+    <body>
+      <section id="nav-bar">
+        <div class="navigation">
+
+            <div class="link">
+              <a href="/"><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><span style="color: rgb(9, 95, 25);">Bilodi</span>Charity</span></a>
+                 <button class="btn btn-lg" id="menu-lk"><i class="fa fa-bars" id="bt"></i></button>
+            </div>
+        <div class="menu-link" id="menu-link">
+            <a href="/">Home</a>
+            <a href="/article">Article</a>
+            <a href="/about">About us</a>
+            </div>
+        </div>
+        <div id="userInt">
+          <style>
+            #userInt{
+               width: 100%;
+               background-color: black; 
+               padding-top: 5px;
+                padding-left: 5px;
+                 display: flex; 
+                 justify-content: space-between;
+            }
+            #userInt h4{
+            color: white;
+            font-size: medium;
+            padding: 5px;
+            transform: scale(.8);
+            }
+            
+            #fa-user{
+              border: solid white 2px;
+              border-radius: 40%;
+              padding: 10px;
+              background-color: rgb(14, 97, 153);
+            }
+            #fa-arrow-down{
+              color: red;
+            }
+            #account{
+              border: solid rgb(14, 97, 153) 1px;
+              border-radius: 15px;
+              padding: 5px;
+              cursor: pointer;
+              font-size: small;
+              transform: scale(0.9);
+            }
+            #account:hover{
+              transform: scale(0.99);
+              border: solid rgb(4, 191, 35) 1px;
+            }
+            
+          </style>
+          <div style="display: flex;">  
+            <h4><i class="fa fa-eye"></i>users</h4>
+            <h4><i class="fa fa-user"></i>user subscriber</h4>
+            <h4><i class="fa fa-user"></i>activity</h4>
+            <h4><i class="fa fa-user"></i>resources</h4>
+            <h4><i class="fa fa-user"></i>subscribers</h4>
+            <h4><i class="fa fa-user"></i>settings</h4>
+            </div>
+          <div>
+            <h4 id="account"><i class="fa fa-user" id="fa-user"></i><%= user %> <i class="fa fa-arrow-down" id="fa-arrow-down"></i></h4>
+          </div>
+
+        </div>
+      </section>
+        <section class="content">
+
+       <div class="news-poster">
+
+        <style>
+            form{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                padding: 10px;
+            }
+            form input{
+                width: 100%;
+                height: 50px;
+                border-radius: 10px;
+
+            }
+            form textarea{
+                width: 100%;
+                height: 300px;
+            }
+            @media screen and (max-width: 800px){
+                form{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding: 10px;
+            }
+            form input{
+                width: 100%;
+                height: 50px;
+                border-radius: 10px;
+
+            }
+            form textarea{
+                width: 100%;
+                height: 300px;
+            } 
+
+            }
+        </style>
+
+        <form action="/postnews1" method="post">
+            
+        <label for="img-input">Image:</label>
+        <input type="file" id="img-input" name="img">
+
+        <label for="title-input">Title:</label>
+        <input type="text" id="title-input" name="title">
+
+        <label for="title-input">category:</label>
+        <input type="text" id="category-input" name="category">
+        
+
+        <label for="desc-input">Description:</label>
+        <textarea id="desc-input" name="desc"></textarea>
+
+            <button type="submit" class="btn btn-success btn-lg">POST</button>
+        </form>
+
+       </div>
+       
+
+
+
+
+        </section>
+
+        
+
+
+        <footer>
+          <div class="container">
+            <div class="row">
+              <p>BILODI ORGANISATION is a registered nonprofit organization committed to improving the lives of people in need. Learn more about our mission and work.</p>
+              <p>Bilodi Charity uses the donated money to provide children in Uganda with basic needs such as food, shelter, and education. With your help, we can ensure that these children have access to the resources they need to grow up healthy and reach their full potential.</p>
+              <div class="col-md-4">
+                <h4>Contact Us</h4>
+                <ul class="list-unstyled">
+                  <li>kamapala , central region</li>
+                  <li>Phone: +256753956857</li>
+                  <li>Email: bilodicharity.org@gmail.com</li>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <h4>Follow Us</h4>
+                <div class="list-unstyled" style="display: flex; flex-direction: row;">
+                  <a href="https://www.facebook.com/profile.php?id=100090421141929"><i class="fa fa-youtube" style="font-size: 50px; color: green; margin: 10px;"></i></a>
+                  <a href="https://twitter.com/JashanJabz?t=fvYEamqjSyPsuD-ZvhZN3w&s=08"><i class="fa fa-facebook" style="font-size: 50px; color: green; margin: 10px;"></i></a>
+                  <a href="https://www.instagram.com/reel/Cp-Olzvo4Si/?igshid=MDJmNzVkMjY"><i class="fa fa-twitter" style="font-size: 50px; color: green; margin: 10px;"></i></a>
+    
+                </div>
+              </div>
+              <div class="col-md-4">
+                <h4>message</h4>
+                <p>Send a message to zarcom</p>
+                <form action="sendmail" method="post">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="message" name="message" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div id="cond">
+                    <a href="/about">About</a>
+                    <a href="/privacypolicy">Privacy Policy</a>
+                    <a href="/contact">Contact Us</a>
+                   <a href="/termsconditions">Terms & conditions</a>
+          </div>
+        </footer>
+          
+        
+    </body>
+</html>

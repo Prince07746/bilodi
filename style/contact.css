@@ -1,0 +1,30 @@
+
+
+@media screen and (max-width: 800px){
+
+
+    
+    
+}
+
+
+@media screen and (min-width: 801px){
+
+
+    .content{
+        margin-top: 200px;
+        width: 100%;
+      }  
+      .mess-info{
+        display: flex;
+        justify-content: space-around;
+      }
+      .mess{
+        width: 45%;
+        
+      }
+      .mess2{
+        width: 45%;
+      }
+}
+

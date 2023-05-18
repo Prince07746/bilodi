@@ -1,369 +1,1328 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Home</title>
+<!DOCTYPE HTML>
+<html lang="en">
 
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">  
-<script src="/mainJS/contactJS/contact.js"></script>
-<script src="/mainJS/homeJS/home.js"></script>
-<script src="/comonfile/logbuttons.js"></script>
-<link rel="stylesheet" href="/computercss/mainpagecss/home.css">
-<link rel="stylesheet" href="/phonecss/mainpagecss/home.css">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Bilodi charity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Description website">
+  <meta name="author" content="Maksym Blank">
+  <meta name="keywords" content="website, with, meta, tags">
+  <meta name="robots" content="noindex, follow">
+  <meta name="revisit-after" content="5 month">
+  <meta name="image" content="http://mywebsite.com/image.jpg">
+  <meta name="og:title" content="Title website">
+  <meta name="og:description" content="Description website">
+  <meta name="og:image" content="http://mywebsite.com/image.jpg">
+  <meta name="og:site_name" content="My Website">
+  <meta name="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Title website">
+  <meta name="twitter:description" content="Description website">
+  <link href="assets/css/plugins/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/plugins/slick.css" rel="stylesheet">
+  <link href="assets/css/plugins/ion.rangeSlider.min.css" rel="stylesheet">
+  <link href="assets/css/plugins/magnific-popup.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/fonts/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/fonts/flaticon/flaticon.css" rel="stylesheet">
+  <script src="//https://www.google.com/recaptcha/api.js?render=6LfSB-8gAAAAANlOX6pLNnpohB5YpGngjqzbxqb7"></script>
 </head>
-<body>
 
-<div class="head">
-  <div id="head">
-  <center>
-    <div>
-      <h1 class="list-one">Bilodi charity Organisation</h1>
-   </div>
-  </center>
-<div class="nav-bar" id="nav-bar">
-    <div>
-    <ul>
-        
-        <li><a href="/">Home</a></li>
-        <li><a href="/About">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-    </ul>
-</div>
-<div style="display: flex; flex-direction: row;" id="button-top">
-    <form method="get" action="logoutRequest" id="logout">
-      <button class="btn btn-info" type="submit" onclick="logout()">Logout</button>
-      </form>
-</div>
-</div>
-</div>
-<div class="top-page">
-<div class="title-top">
-<div  id="title-text">
-<h1>Making a Difference Together</h1>
-
-<h1>Welcome <%= message %></h1>
-
-<div class="text-inside">
-<p>Our Charity Organization's Commitment to Collaboration</p>
-      <p>At Bilodi charity organization, we believe that collaboration is key to achieving lasting change and empowering communities in need. That's why we work closely with local organizations and community members to identify their needs and create sustainable solutions together.</p>
-      <form method="get" action="donateRequest" id="dn">
-        <button class="btn btn-success" type="submit">Donate</button>
-    </form>
-     
-    </div>
-</div>
-<center>
-<div id="logo-img">
-  <img src="/bilodiImages/logo.jpg" alt="bilod charity organization logo" id="img-logo">
-</div>
-</center>
-
-</div>
-</div>
-
-<section class="bilodi-head">
-  <div>
-  <h1>your donation is making a meaningful difference.</h1>
-  <p>Our commitment to trust and safety is at the core of everything we do. We take your donation seriously and are dedicated to using it to make a positive impact in the world. So, whether you're donating to support education, healthcare, or other vital initiatives, know that we have your back and are working tirelessly to ensure that your donation is making a meaningful difference.</p>
-</div>
-</section>
-
-<section class="present-news">
-  <h2 style="color: green">Fundraising Project Achieves Impactful Results</h2>
-  <div class="container0">
-    <div class="news0" id="news0">
-    <a class="news0" id="news0" href="/news/<%= successfull1_title %>">
-      <img src="/bilodiImages/<%= successfull1_img %>" alt="News 1">
-      <h2><%= successfull1_title %></h2>
-      <p><%= successfull1_description %></p>
-      <p class="category"><%= successfull1_category %></p>
-    </a>
-    </div>
-    <div class="news0" id="news0">
-    <a  href="/news/<%= successfull2_title %>">
-      <img src="/bilodiImages/<%= successfull2_img %>" alt="News 2">
-      <h2><%= successfull2_title %></h2>
-      <p><%= successfull2_description %></p>
-      <p class="category"><%= successfull2_category %></p>
-    </a>
-    </div>
-    <div class="news0" id="news0">
-    <a  href="/news/<%= successfull3_title %>">
-      <img src="/bilodiImages/<%= successfull3_img %>" alt="News 3">
-      <h2><%= successfull3_title %></h2>
-      <p><%= successfull3_description %></p>
-      <p class="category"><%= successfull3_category %></p>
-    </a>
-    </div>
-    <div class="news0" id="news0">
-    <a class="news0" id="news0" href="/news/<%= successfull4_title %>">
-      <img src="/bilodiImages/<%= successfull4_img %>" alt="News 4">
-      <h2><%= successfull4_title %></h2>
-      <p><%= successfull4_description %></p>
-      <p class="category"><%= successfull4_category %></p>
-    </a>
-    </div>
-    <div class="news0" id="news0">
-    <a class="news0" id="news0" href="/news/<%= successfull5_title %>">
-      <img src="/bilodiImages/<%= successfull5_img %>" alt="News 5">
-      <h2><%= successfull5_title %></h2>
-      <p><%= successfull5_description %></p>
-      <p class="category"><%= successfull5_category %></p>
-    </a>
-    </div>
-    <div class="news0" id="news0">
-    <a class="news0" id="news0" href="/news/<%= successfull6_title %>">
-      <img src="/bilodiImages/<%= successfull6_img %>" alt="News 6">
-      <h2><%= successfull6_title %></h2>
-      <p><%= successfull6_description %></p>
-      <p class="category"><%= successfull6_category %></p>
-    </a>
-    </div>
-    </div>  
-
-
-</section>
-
-
-
-
-  
-<div class="NWS">
-
-<div class="container1">
-  <div class="news" id="news0">
-    <a href="/donation/<%= donationNews1_title %>">
-    <img src="/bilodiImages/<%= donationNews1_img %>" alt="News 1">
-    <h2><%= donationNews1_title %></h2>
-    <p><%= donationNews1_description %></p>
-    <p class="date"><%= donationNews1_amount %></p>
-   </a>
-      <form method="get" action="/donateRequest">
-        <button type="submit" class="category">Donate</button>
-      </form>
-  </div>
-  <div class="news" id="news0">
-    <a href="/donation/<%= donationNews2_title %>">
-    <img src="/bilodiImages/<%= donationNews2_img %>" alt="News 1">
-    <h2><%= donationNews2_title %></h2>
-    <p><%= donationNews2_description %></p>
-    <p class="date"><%= donationNews2_amount %></p>
-    </a>
-      <form method="get" action="/donateRequest">
-        <button type="submit" class="category">Donate</button>
-      </form>
-  </div>
-
-  <div class="news" id="news0">
-    <a href="/donation/<%= donationNews3_title %>">
-    <img src="/bilodiImages/<%= donationNews3_img %>" alt="News 1">
-    <h2><%= donationNews3_title %></h2>
-    <p><%= donationNews3_description %></p>
-    <p class="date"><%= donationNews3_amount %></p>
-  </a>
-      <form method="get" action="/donateRequest">
-        <button type="submit" class="category">Donate</button>
-      </form>
-  </div>
-  <div class="news" id="news0">
-    <a href="/donation/<%= donationNews4_title %>">
-    <img src="/bilodiImages/<%= donationNews4_img %>" alt="News 1">
-    <h2><%= donationNews4_title %></h2>
-    <p><%= donationNews4_description %></p>
-    <p class="date"><%= donationNews4_amount %></p>
-    </a>
-      <form method="get" action="/donateRequest">
-        <button type="submit" class="category">Donate</button>
-      </form>
-  </div>
-  <div class="news" id="news0">
-    <a href="/donation/<%= donationNews5_title %>">
-    <img src="/bilodiImages/<%= donationNews5_img %>" alt="News 1">
-    <h2><%= donationNews5_title %></h2>
-    <p><%= donationNews5_description %></p>
-    <p class="date"><%= donationNews5_amount %></p>
-    </a>
-      <form method="get" action="/donateRequest">
-        <button type="submit" class="category">Donate</button>
-      </form>
-  </div>
-  <div class="news" id="news0">
-    <a href="/donation/<%= donationNews6_title %>">
-    <img src="/bilodiImages/<%= donationNews6_img %>" alt="News 1">
-    <h2><%= donationNews6_title %></h2>
-    <p><%= donationNews6_description %></p>
-    <p class="date"><%= donationNews6_amount %></p>
-    </a>
-      <form method="get" action="/donateRequest">
-        <button type="submit" class="category">Donate</button>
-      </form>
-  </div>
-  </div>  
-
-  <% function defaultValue(value, defaultVal) { %>
-    <%= typeof value !== 'undefined' ? value : defaultVal %>
-  <% } %>
-
-  <div class="cont">
-    <h3 style="color: rgb(249, 252, 249); background-color: rgb(12, 108, 199); border-top-right-radius: 5px; border-top-left-radius: 5px;">PROJECT</h3>
-    <div class="news-2" id="news2">
-      <div style="background-image: url(''); background-repeat: repeat; background-position: center; font-size: 2em; color: #ddd; text-align: center;">
-        <b style="color: black; opacity: 20%;"><%= defaultValue(Project1text, 'Project 1 Text') %></b>
-      </div>
-      <div class="content">
-        <h3 style="word-wrap: break-word;"><%= defaultValue(Project1head, 'Project 1 Head') %></h3>
-        <p style="word-wrap: break-word;"><%= defaultValue(Project1description, 'Project 1 Description') %></p>
-      </div>
-    </div>
-    <div class="news-2" id="news2">
-      <div style="background-image: url(''); background-repeat: repeat; background-position: center; font-size: 2em; color: #ddd; text-align: center;">
-        <b style="color: black; opacity: 20%;"><%= defaultValue(Project2text, 'Project 2 Text') %></b>
-      </div>
-      <div class="content">
-        <h3 style="word-wrap: break-word;"><%= defaultValue(Project2head, 'Project 2 Head') %></h3>
-        <p style="word-wrap: break-word;"><%= defaultValue(Project2description, 'Project 2 Description') %></p>
-      </div>
-    </div>
-    <div class="news-2" id="news2">
-      <div style="background-image: url(''); background-repeat: repeat; background-position: center; font-size: 2em; color: #ddd; text-align: center;">
-        <b style="color: black; opacity: 20%;"><%= defaultValue(Project3text, 'Project 3 Text') %></b>
-      </div>
-      <div class="content">
-        <h3 style="word-wrap: break-word;"><%= defaultValue(Project3head, 'Project 3 Head') %></h3>
-        <p style="word-wrap: break-word;"><%= defaultValue(Project3description, 'Project 3 Description') %></p>
-      </div>
-    </div>
-    <button class="btn btn-primary"><a href="/project" style="color: white; text-decoration: none;">view more project</a></button>
+<body class="btn-style-1 btn-square sidebar-style-1">
+  <!--header Start-->
+  <div id="section-header">
    
-    <div class="hwtohelp">
+    <aside class="sigma_aside sigma_aside-desktop">
+      <div class="sidebar">
+        <!-- Recent Posts Widget -->
+        <div class="widget widget-about">
+          <h5 class="widget-title">About Ayer</h5>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page.</p>
+          <ul class="sigma_social-icons justify-content-start has-border">
+            <li>
+              <a href="https://www.facebook.com/profile.php?id=100090421141929"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li>
+              <a href="https://twitter.com/JashanJabz?t=fvYEamqjSyPsuD-ZvhZN3w&s=08"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/reel/Cp-Olzvo4Si/?igshid=MDJmNzVkMjY"><i class="fab fa-instagram"></i></a>
+            </li>
+          </ul>
+        </div>
+        <!-- Subscribe Widget -->
+        <div class="widget widget-newsletter">
+          <h5 class="widget-title">Join Newsletter</h5>
+          <form method="post" action='/'>
+            <input type="email" name="email" placeholder="Enter your email">
+            <button type="button" class="btn-block mt-4">Subscribe</button>
+          </form>
+        </div>
+        <!-- Recent Posts Widget -->
+              <div class="widget widget-sigma-recent-posts style-2">
+                <h5 class="widget-title">Recommended</h5>
+                <div class="sigma_recent-post">
+                  <a href="#" class="recent-post-image">
+                    <img src="assets/img/blog-details/325x150.jpg" alt="img">
+                  </a>
+                  <div class="recent-post-descr">
+                    <h6>
 
-      <h2>How You Can Help</h2>
-      <p>If you would like to support our work, there are many ways to get involved:</p>
-<ul>
+                      <a href="#">Every Next Level Of Your Life Will Demand Something</a>
 
-<li>Make a donation</li>
-<li>Become a volunteer</li>
-<li>Spread the word on social media</li>
-</ul>
-<div class="help-ways">
-  <div class="help-way">
-    <img src="/bilodiImages/charity1.jpeg" alt="Charity image" style="border-radius: 5px;">
-    <h3>Donate Money</h3>
-    <p>You can donate money to support our cause. Your donation will help us provide food, shelter, and education to those in need.</p>
-    <a href="/donateRequest" class="btn btn-primary">Donate Now</a>
-  </div>
-  
-  
-  <div class="help-way">
-    <img src="/bilodiImages/charity3.jpeg" alt="Charity image" style="border-radius: 5px;">
-    <h3>Donate Goods</h3>
-    <p>You can donate goods such as clothing, books, and toys to help those in need. Your donation will help us improve the lives of the less fortunate.</p>
-    <a href="donate-goods-page.html" class="btn btn-primary">Donate Goods Now</a>
-  </div>
-  
+                    </h6>
+                    <a href="#" class="date">
+                      <i class="far fa-clock mr-2"></i>
+June 4, 2022
+                    </a>
+                  </div>
+                </div>
+                <div class="sigma_recent-post">
+                  <a href="#" class="recent-post-image">
+                    <img src="assets/img/blog-details/325x150-0.jpg" alt="img">
+                  </a>
+                  <div class="recent-post-descr">
+                    <h6>
 
-    </div>
-  </div>
-  </div>
+                      <a href="#">We are the champions, we do not give up, we try</a>
 
-  
-
-
-</div>
-<section class="main-nws">
-<center>
-  <h1 style="color: white;">Share and find Bilodi charity</h1>
-  
-</center>
-
-<img src="/bilodiImages/juukoTell.png" id="bilody-banner" style="width: 100%">
-
-
-</section>
-
-
-
-<section class="what-do">
-
-  <div class="section">
-    <img src="/bilodiImages/charity3.jpeg" alt="Money" id="img">
-    <h3>How Donations Help Children in Need</h3>
-    <p style="color: white">Bilodi Charity uses the donated money to provide children in Uganda with basic needs such as food, shelter, and education. With your help, we can ensure that these children have access to the resources they need to grow up healthy and reach their full potential.</p>
-  </div>
-  <div class="section">
-
-    <h3>Our Process for Helping Children in Uganda</h3>
-    <p>We work closely with local communities and organizations in Uganda to identify the areas of greatest need. Our team of dedicated volunteers then works tirelessly to provide support to these communities, ensuring that the resources we provide are used effectively and efficiently.</p>
-  </div>
-  <div class="section">
-
-    <h3>How We're Organized to Help Children and People in Need</h3>
-    <p>Bilodi Charity is a grassroots organization based in Kampala, Uganda. Our team is made up of passionate volunteers who are committed to making a difference in the lives of those who need it most. We work closely with local communities and organizations to identify areas of need and provide support where it's needed most.</p>
-  </div>
-
-
-</section>
-
-
-<div class="footer-page">
-<footer>
-    <div class="footer-container">
-      <div class="footer-left">
-        <h3>Make a Donation</h3>
-        <p>Your donation can help change lives. Every little bit counts.</p>
-        <p>Don't forget that this website is for the BILODI ORGANISATION, a registered nonprofit organization committed to improving the lives of people in need.</p>
+                    </h6>
+                    <a href="#" class="date">
+                      <i class="far fa-clock mr-2"></i>
+March 19, 2022
+                    </a>
+                  </div>
+                </div>
+              </div>
       </div>
-      <div class="footer-right">
-        <form method="get" action="/donateRequest">
-        <button type="submit">Donate Now</button>
-      </form>
-      </div>
+    </aside>
+    <div class="sigma_aside-overlay aside-trigger-right">
     </div>
-    <div class="footer-bottom">
-      <div class="footer-bottom-left">
-        <h4>About Us</h4>
-        <p>BILODI ORGANISATION is a registered nonprofit organization committed to improving the lives of people in need. Learn more about our mission and work.</p>
-        <div style="display: flex; flex-direction: row;">
-         <a href="http://youtube.com/channel/UC3OGVcVKxh4dJ_TCMWgC4Lg" ><i class="fa fa-youtube" style="font-size: 50px; color: green; margin: 10px;"></i></a>
-         <a href="https://www.facebook.com/profile.php?id=100090421141929"><i class="fa fa-facebook" style="font-size: 50px; color: green; margin: 10px;"></i></a>
-         <a href="https://twitter.com/JashanJabz?t=fvYEamqjSyPsuD-ZvhZN3w&s=08"><i class="fa fa-twitter" style="font-size: 50px; color: green; margin: 10px;"></i></a>
-         <a href="https://www.instagram.com/reel/Cp-Olzvo4Si/?igshid=MDJmNzVkMjY="><i class="fa fa-instagram" style="font-size: 50px; color: green; margin: 10px;"></i></a>
+    <aside class="sigma_aside">
+      <div class="sigma_close aside-trigger">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="sigma_logo-wrapper">
+        <a class="sigma_logo" href="/">
+          <img src="assets/img/logo.png" alt="logo">
+        </a>
+      </div>
+      <ul class="navbar-nav">
+        <li class="menu-item menu-item-has-children">
+<a href="#">Home</a>
+          <ul class="sub-menu">
+          </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+<a href="services.html">Services</a>
+          <ul class="sub-menu">
+            <li class="menu-item">
+<a href="services.html">Service</a>
+            </li>
+            <li class="menu-item">
+<a href="#">Service details</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+<a href="#">Causes</a>
+          <ul class="sub-menu">
+            <li class="menu-item">
+<a href="#">Causes</a>
+            </li>
+            <li class="menu-item">
+<a href="#">Causes details</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+<a href="#">Pages</a>
+          <ul class="sub-menu">
+            <li class="menu-item">
+<a href="#">Volunteer</a>
+            </li>
+            <li class="menu-item">
+<a href="about">About us</a>
+            </li>
+            <li class="menu-item">
+<a href="contact">Contact us</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+<a href="#">Blog</a>
+          <ul class="sub-menu">
+            <li class="menu-item">
+<a href="#">Blog</a>
+            </li>
+            <li class="menu-item">
+<a href="#">Blog details</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+<a href="contact">Contact us</a>
+        </li>
+      </ul>
+    </aside>
+    <div class="sigma_aside-overlay aside-trigger">
+    </div>
+    <header class="sigma_header style-6 can-sticky">
+      <div class="sigma_header-middle">
+        <div class="container">
+          <div class="navbar">
+            <div class="sigma_logo-wrapper">
+              <a class="sigma_logo" href="/">
+                <img src="assets/img/logo.png" alt="logo">
+              </a>
+            </div>
+            <div class="sigma_header-top-links important-links d-none d-lg-block">
+              <ul class="sigma_header-top-nav">
+                <li>
+                  <a href="#">
+                    <i class="fal fa-clock"></i>
+                    <div>
+                      <p>Working Hours</p>
+                      <p><b>Mon-Sat 9:00 To 17:00</b>
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fal fa-phone"></i>
+                    <div>
+                      <p>Our Address</p>
+                      <p><b>Kampala Uganda</b>
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fal fa-map-marker-alt"></i>
+                    <div>
+                      <p>Call Us</p>
+                      <p><b>+256753956857</b>
+                      </p>
+                      <p>for WEb developement & designing <b>+25674630649</b></p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="sigma_header-controls style-2 d-block d-lg-none">
+              <ul class="sigma_header-controls-inner">
+                <li class="aside-toggle aside-trigger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom-middle">
-        <h4>Get in Touch</h4>
-        <ul>
-          <li><a href="/contact">Contact Us</a></li>
-          <li><a href="/donateRequest">Support Us</a></li>
-          <li><a href="/contact">Volunteer</a></li>
-        </ul>
+      <div class="sigma_header-bottom">
+        <div class="container">
+          <div class="navbar">
+            <ul class="navbar-nav">
+            <li class="menu-item menu-item-has-children">
+<a href="/">Home</a>
+              <ul class="sub-menu">
+               
+              </ul>
+            </li>
+            <li class="menu-item menu-item-has-children">
+<a href="services.html">Services</a>
+              <ul class="sub-menu">
+                <li class="menu-item">
+<a href="#">Service details</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item menu-item-has-children">
+<a href="#">Causes</a>
+              <ul class="sub-menu">
+                <li class="menu-item">
+<a href="#">Causes details</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item menu-item-has-children">
+<a href="#">Pages</a>
+              <ul class="sub-menu">
+                <li class="menu-item">
+<a href="#">Volunteer</a>
+                </li>
+                <li class="menu-item">
+<a href="about">About us</a>
+                </li>
+                <li class="menu-item">
+<a href="contact">Contact us</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item menu-item-has-children">
+<a href="#">Blog</a>
+              <ul class="sub-menu">
+                <li class="menu-item">
+<a href="#">Blog details</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+<a href="contact">Contact us</a>
+            </li>
+          </ul>
+            <div class="sigma_header-controls style-2 d-flex">
+              <ul class="sigma_header-controls-inner">
+                <li class="search-trigger header-controls-item d-none d-sm-block">
+                  <a class="sigma_header-control-search" title="Search" href="#">
+                    <i class="fa fa-search"></i>
+                  </a>
+                </li>
+                <li class="aside-toggle aside-trigger-right desktop-toggler">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </li>
+                <li class="aside-toggle aside-trigger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </li>
+              </ul>
+              <a href="/donateRequest" class="sigma_btn">Donate</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="footer-bottom-right">
-        <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Use</a></li>
-        </ul>
+    </header>
+    <div class="search-form-wrapper">
+      <div class="search-trigger sigma_close">
+        <span></span>
+        <span></span>
       </div>
+      <form class="search-form" method="post">
+        <input type="text" placeholder="Search..." value="">
+        <button type="submit" class="search-btn">
+          <i class="fal fa-search m-0"></i>
+        </button>
+      </form>
     </div>
-  </footer>
-  <footer class="footer2">
-    <div class="footer2-left">
-      <a href="#">Privacy Policy</a>
-      <span>|</span>
-      <a href="#">Terms of Use</a>
-    </div>
-    <div class="footer2-right">
-      <form method="get" action="logoutRequest" id="logout">
-        <button class="btn btn-info" type="submit" onclick="logout()">Logout</button>
-        </form>
-    </div>
-  </footer>
-</div>
+    <!--header End-->
+  </div>
+  <!--hero Start-->
+  <div id="section-hero">
+    <div class="sigma_banner light-bg style-3 light-overlay">
+      <div class="sigma_banner-image bg-center bg-cover" style="background-image: url(assets/img/home-1/700x800.jpg)">
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="sigma_banner-text banner-slider-inner">
+              <h1 class="title">
 
+                Charity Is The Best Prayer
+
+              </h1>
+              <p>Multipurpose Responsive Templete Suitable for Charity, NGO, Events, Church, Fund Raising and Non-Profit categories</p>
+              <div class="banner-links d-flex align-items-center">
+                <a href="about" class="sigma_btn light">Donate Now</a>
+                <a href="contact" class="sigma_btn ml-4">Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--hero End-->
+  </div>
+ 
+  <!--about Start-->
+  <div id="section-about">
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="sigma_about style-6">
+              <img src="assets/img/home-1/390x540.jpg" alt="img">
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="sigma_about style-6 pl-lg-4">
+              <div class="section-title">
+                <span class="subtitle">About us</span>
+                <h3 class="title">Loving god, <span class="primary-color">serving the world</span>
+</h3>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-lg-6 mb-lg-30">
+                  <p>
+                    Bildoicharity, a Uganda-based organization, exemplifies the power of charity by extending voluntary help to those in need. They embrace effective altruism, using evidence-based approaches to maximize their impact. Bildoicharity goes beyond boundaries. 
+                  </p>
+                  <p>
+                    providing assistance to anyone regardless of their background. Through their dedication, they alleviate suffering and empower individuals to thrive, fostering a society where kindness and generosity prevail. Partnering with Bildoicharity allows us to make a meaningful difference and build a brighter future for all.
+                  </p>
+                  <a href="about" class="sigma_btn">Learn More</a>
+                </div>
+                <div class="col-lg-6">
+                  <div class="sigma_box">
+                    <div class="sigma_media m-0">
+                      <div class="sigma_progress round sm">
+                        <span> <b class="counter" data-from="0" data-to="83">83</b> <span class="primary-color">%</span> 
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 197 197" enable-background="new 0 0 197 197" xml:space="preserve">
+                          <circle class="sigma_progress-stroke" stroke-linecap="round" cx="98.5" cy="98.6" r="97.5">
+                          </circle>
+                          <circle class="sigma_progress-round" data-to="210" stroke-linecap="round" cx="98.5" cy="98.6" r="97.5">
+                          </circle>
+                        </svg>
+                      </div>
+                      <div class="sigma_media-content">
+                        <h5>Charity</h5>
+                      </div>
+                    </div>
+                    <p class="mt-4 mb-0">Zarcom: Inspiring Impact through a Captivating and Empowering Theme for Charitable Causes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--about End-->
+  </div>
+
+
+
+
+
+
+  <!--popup Start-->
+  <div id="section-popup">
+    <div class="modal fade" id="sigma_popup-newsletter" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog sigma_newsletter-popup-modal style-3 modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="sigma_close newsletter-popup-trigger" data-dismiss="modal">
+              <span></span>
+              <span></span>
+            </div>
+            <div class="sigma_newsletter-popup-text-wrapper">
+              <h3>Join Our Newsletter</h3>
+              <p>Ayer is a visually impressive, amusing and vibrant, feature rich Elementor based theme.</p>
+            </div>
+            <form method="post" class="text-center">
+              <div class="form-group">
+                <input type="email" placeholder="Email Address" class="form-control" name="newsletter-email" value="">
+              </div>
+              <button type="submit" name="button">Subscribe</button>
+            </form>
+            <span class="sigma_newsletter-popup-dismiss newsletter-popup-trigger" data-dismiss="modal">Don't show again</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--popup End-->
+  </div>
+
+
+
+
+  <!--counter Start-->
+  <div id="section-counter">
+    <div class="section pt-0">
+      <div class="container">
+        <div class="row">
+        <div class="col-lg-6">
+          <div class="sigma_about style-6 mb-5 mb-lg-0">
+            <div class="section-title">
+              <h3 class="title">Why Us</h3>
+            </div>
+            <p>
+              At Bilodi Charity, we believe in the transformative power of charitable giving, specifically directed towards supporting children in Uganda. Our organization is dedicated to providing essential resources, financial assistance, and valuable time to those less fortunate, especially young ones in need.
+            </p>
+             <div class="sigma_general-list style-2 mt-4 mb-0">
+                    <ul>
+                      <li>
+                        <i class="far fa-check"></i>
+                        <span>Become Volunteer</span>
+                      </li>
+                      <li>
+                        <i class="far fa-check"></i>
+                        <span>Make A Donation</span>
+                      </li>
+                      <li>
+                        <i class="far fa-check"></i>
+                        <span>Give Inspiration</span>
+                      </li>
+                    </ul>
+                  </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row no-gutters">
+          <div class="col-lg-4 col-sm-3">
+            <div class="sigma_counter text-center style-2 border-0">
+              <i class="flaticon-charity-2 is_flaticon text-white"></i>
+              <span class="justify-content-center">
+
+                <b class="counter text-white" data-from="0" data-to="132500">132500</b>
+
+                <span class="plus text-white">+</span>
+              </span>
+              <p class="text-white mb-0">We Helped</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-3">
+            <div class="sigma_counter text-center style-2">
+              <i class="flaticon-team is_flaticon text-white"></i>
+              <span class="justify-content-center">
+
+                <b class="counter text-white" data-from="0" data-to="950">950</b>
+                <span class="plus text-white">+</span>
+
+              </span>
+              <p class="text-white mb-0">Volunteers</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-3">
+            <div class="sigma_counter text-center style-2">
+              <i class="flaticon-award-1 is_flaticon text-white"></i>
+              <span class="justify-content-center">
+
+                <b class="counter text-white" data-from="0" data-to="520">520</b>
+
+                <span class="plus text-white">+</span>
+              </span>
+              <p class="text-white mb-0">Awards</p>
+            </div>
+          </div>
+        </div>
+           <p class="mt-3 mb-0">
+            At Bilodi Charity, we strive to create a culture of giving that extends beyond personal relationships. Our aim is to make a positive impact in the lives of those who are less fortunate, regardless of their connection to us. By treating those related to us and those outside our immediate circles with equal care and consideration, we promote inclusivity and foster a spirit of empathy in our community.
+            </p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <!--counter End-->
+  </div>
+  <!--services Start-->
+  <div id="section-services">
+    <div class="section section-padding pt-0">
+      <div class="container">
+        <div class="section-title centered has-element">
+          <h3 class="title"> <span class="primary-color">Bilodi</span> Services</h3>
+          <div class="d-flex align-items-center justify-content-center">
+            <span class="lines"></span>
+            <i class="icon flaticon-solidarity"></i>
+            <span class="lines"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="sigma_service style-14">
+              <span class="number">01</span>
+              <h5>
+
+                <a href="#">Help Child for Education</a>
+
+              </h5>
+              <p>Promoting the right and wellbeing of every child, in everything we do</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="sigma_service style-14">
+              <span class="number secondary-hue">02</span>
+              <h5>
+
+                <a href="#">Help Child for Cloth</a>
+
+              </h5>
+              <p>Supporting Hope programs for children in more than 150 countries</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="sigma_service style-14">
+              <span class="number">03</span>
+              <h5>
+
+                <a href="#">Help Child for Food</a>
+
+              </h5>
+              <p>Focus on reaching the most vunerable children, to benefit all</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--services End-->
+  </div>
+
+
+
+
+
+  
+
+
+
+
+   <!--causes Start-->
+  <div id="section-causes">
+    <div class="section bg-gray">
+      <div class="sigma_portfolio-wrapper style-14">
+
+
+        <div class="container">
+
+
+            <div class="section-title flex-title">
+            <div class="section-title-heading">
+            <span class="subtitle">Causes</span>
+            <h3 class="title mb-0">Powerful Case</h3>
+            </div>
+            <div class="sigma_custom-dots mt-4 mt-sm-0">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
+          </div>
+
+   <!--The opening image slide //=> sigma_portfolio-slider-6  -->       <div class="sigma_portfolio-slider-6">
+
+          <div class="sigma_portfolio style-14">
+          <div class="sigma_portfolio-thumb">
+          <img src="assets/img/causes/charity1.jpeg" alt="causes">
+          </div>
+          <div class="sigma_portfolio-content-wrapper">
+          <a href="#" class="sigma_portfolio-link">
+          <i class="fal fa-arrow-right"></i>
+          </a>
+          <div class="sigma_portfolio-content">
+          <div class="sigma_portfolio-categories">
+          <a href="#" class="sigma_portfolio-category">Africa, Charity</a>
+          </div>
+          <h5>
+          <a href="#">Fundraising</a>
+          </h5>
+          </div>
+          </div>
+          </div>
+
+
+          <div class="sigma_portfolio style-14">
+          <div class="sigma_portfolio-thumb">
+          <img src="assets/img/causes/charity2.jpeg" alt="causes">
+          </div>
+          <div class="sigma_portfolio-content-wrapper">
+          <a href="#" class="sigma_portfolio-link">
+          <i class="fal fa-arrow-right"></i>
+          </a>
+          <div class="sigma_portfolio-content">
+          <div class="sigma_portfolio-categories">
+          <a href="#" class="sigma_portfolio-category">Donate</a>
+          </div>
+          <h5>
+          <a href="#">Food For Poor People</a>
+          </h5>
+          </div>
+          </div>
+          </div>
+
+
+
+          <div class="sigma_portfolio style-14">
+          <div class="sigma_portfolio-thumb">
+          <img src="assets/img/causes/charity3.jpeg" alt="causes">
+          </div>
+          <div class="sigma_portfolio-content-wrapper">
+          <a href="#" class="sigma_portfolio-link">
+          <i class="fal fa-arrow-right"></i>
+          </a>
+          <div class="sigma_portfolio-content">
+          <div class="sigma_portfolio-categories">
+          <a href="#" class="sigma_portfolio-category">Donate</a>
+          </div>
+          <h5>
+          <a href="#">Food For Childrens</a>
+          </h5>
+          </div>
+          </div>
+          </div>
+
+
+          <div class="sigma_portfolio style-14">
+          <div class="sigma_portfolio-thumb">
+          <img src="assets/img/causes/charity4.jpeg" alt="causes">
+          </div>
+          <div class="sigma_portfolio-content-wrapper">
+          <a href="#" class="sigma_portfolio-link">
+          <i class="fal fa-arrow-right"></i>
+          </a>
+          <div class="sigma_portfolio-content">
+          <div class="sigma_portfolio-categories">
+          <a href="#" class="sigma_portfolio-category">Donate</a>
+          </div>
+          <h5>
+          <a href="#">Fruits For Poor People</a>
+          </h5>
+          </div>
+          </div>
+          </div>
+
+
+          <div class="sigma_portfolio style-14">
+          <div class="sigma_portfolio-thumb">
+          <img src="assets/img/causes/357x357-3.jpg" alt="causes">
+          </div>
+
+          <div class="sigma_portfolio-content-wrapper">
+          <a href="#" class="sigma_portfolio-link">
+          <i class="fal fa-arrow-right"></i>
+          </a>
+          <div class="sigma_portfolio-content">
+          <div class="sigma_portfolio-categories">
+          <a href="#" class="sigma_portfolio-category">Donate, Africa</a>
+          </div>
+          <h5>
+          <a href="#">Education For Oll</a>
+          </h5>
+          </div>
+          </div>
+
+          </div>
+
+   <!--The closing tag of image sliding // sigma_portfolio-slider-6 //  --> </div>
+
+        </div>
+
+
+      </div>
+    </div>
+    <!--causes End-->
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--team Start-->
+  <div id="section-team">
+    <div class="section section-padding">
+      <div class="container">
+        <div class="section-title centered has-element">
+          <h3 class="title">Our <span class="primary-color">Volunteers</span></h3>
+          <div class="d-flex align-items-center justify-content-center">
+            <span class="lines"></span>
+            <i class="icon flaticon-solidarity"></i>
+            <span class="lines"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="sigma_team style-9">
+              <div class="sigma_team-thumb">
+                
+                  <img src="assets/img/home-1/350x400-2.jpg" alt="team">
+                
+                <div class="sigma_team-body">
+                  <div class="sigma_team-title">
+                    <h5>
+
+                      <a href="#">Maria Jhonson</a>
+
+                    </h5>
+                    <div class="sigma_team-categories">
+                      <a href="#" class="sigma_team-category">Volunteer</a>
+                    </div>
+                  </div>
+                  <ul class="sigma_social-icons">
+                    <li>
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="sigma_team style-9">
+              <div class="sigma_team-thumb">
+                
+                  <img src="/assets/img/home-1/100x100-4.jpg" alt="team">
+                
+                <div class="sigma_team-body">
+                  <div class="sigma_team-title">
+                    <h5>
+
+                      <a href="#">David prince</a>
+
+                    </h5>
+                    <div class="sigma_team-categories">
+                      <a href="#" class="sigma_team-category">Volunteer</a>
+                    </div>
+                  </div>
+                  <ul class="sigma_social-icons">
+                    <li>
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="sigma_team style-9">
+              <div class="sigma_team-thumb">
+                
+                  <img src="assets/img/home-1/350x400-4.jpg" alt="team">
+                
+                <div class="sigma_team-body">
+                  <div class="sigma_team-title">
+                    <h5>
+
+                      <a href="#">Tin Abella</a>
+
+                    </h5>
+                    <div class="sigma_team-categories">
+                      <a href="#" class="sigma_team-category">Volunteer</a>
+                    </div>
+                  </div>
+                  <ul class="sigma_social-icons">
+                    <li>
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--team End-->
+  </div>
+  <!--feature Start-->
+  <div id="section-feature">
+    <div class="section section-padding pt-0">
+      <div class="container">
+        <div class="section-title centered has-element">
+          <h3 class="title">Our <span class="primary-color">Features</span></h3>
+          <div class="d-flex align-items-center justify-content-center">
+            <span class="lines"></span>
+            <i class="icon flaticon-solidarity"></i>
+            <span class="lines"></span>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="sigma_info-image mb-30">
+              <img src="assets/img/home-1/540x500.jpg" class="w-100" alt="img">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="sigma_info style-12">
+                  <div class="sigma_info-title">
+                    <span class="sigma_info-icon bg-primary-light primary-color">
+
+                      <i class="flaticon-charity-1 is_flaticon"></i>
+
+                    </span>
+                    <h5>
+
+                      Expert Volunteers
+
+                    </h5>
+                  </div>
+                  <div class="sigma_info-description">
+                    <p>There are a number of philosophies about charity, often associated with religion</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sigma_info style-12">
+                  <div class="sigma_info-title">
+                    <span class="sigma_info-icon bg-primary-light primary-color">
+
+                      <i class="flaticon-award-1 is_flaticon"></i>
+
+                    </span>
+                    <h5>
+
+                      Education Support
+
+                    </h5>
+                  </div>
+                  <div class="sigma_info-description">
+                    <p> Bilodi Charity is committed to providing access to quality education for children in Uganda. Through various initiatives, we offer scholarships, school supplies, and educational resources to support their learning journey.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sigma_info style-12">
+                  <div class="sigma_info-title">
+                    <span class="sigma_info-icon bg-primary-light primary-color">
+
+                      <i class="flaticon-award-1 is_flaticon"></i>
+
+                    </span>
+                    <h5>
+
+                      Nutritional Programs
+
+                    </h5>
+                  </div>
+                  <div class="sigma_info-description">
+                    <p> Bilodi Charity understands the importance of proper nutrition for children's growth and development. We implement nutritional programs that offer meals, food supplies, and education on healthy eating habits to ensure children have access to nutritious food.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sigma_info style-12">
+                  <div class="sigma_info-title">
+                    <span class="sigma_info-icon bg-primary-light primary-color">
+
+                      <i class="flaticon-24-hours-1 is_flaticon"></i>
+
+                    </span>
+                    <h5>
+
+                      24/7 Working
+
+                    </h5>
+                  </div>
+                  <div class="sigma_info-description">
+                    <p>Charitable giving is the act of giving money, goods or time to the unfortunate, either directly</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--feature End-->
+  </div>
+  <!--cta Start-->
+  <div id="section-cta">
+    <div class="section section-padding pt-0">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <div class="sigma_cta style-3">
+              <span class="sigma_cta-icon-box">
+
+                <i class="flaticon-solidarity-1 is_flaticon"></i>
+
+              </span>
+              <div class="sigma_cta-title">
+                <h5>Making More Possible</h5>
+                <p>Most forms of charity are concerned with providing basic necessities such as food, water, clothing, healthcare and shelter</p>
+              </div>
+              <button type="button">Get Started</button>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="sigma_cta style-3 border-0">
+              <span class="sigma_cta-icon-box">
+
+                <i class="flaticon-smartphone is_flaticon"></i>
+
+              </span>
+              <div class="sigma_cta-title">
+                <h5>Download Our App</h5>
+                <p>With regards to religious aspects, the recipient of charity may offer to pray for the benefactor In medieval Europe</p>
+              </div>
+              <button type="button" class="secondary">Download Free</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--cta End-->
+  </div>
+  <!--testimonial Start-->
+  <div id="section-testimonial">
+    <div class="section section-padding pt-0">
+      <div class="container">
+        <div class="section-title centered has-element">
+          <h3 class="title">Our <span class="primary-color">Testimonial</span></h3>
+          <div class="d-flex align-items-center justify-content-center">
+            <span class="lines"></span>
+            <i class="icon flaticon-solidarity"></i>
+            <span class="lines"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="sigma_testimonial">
+              <div class="sigma_testimonial-thumb">
+                <img src="assets/img/home-1/100x100-2.jpg" alt="testimonial">
+              </div>
+              <div class="sigma_testimonial-body">
+                <span class="fas fa-quote-left sigma_testimonial-icon"></span>
+                <p>"Institutions evolved to carry out the labor of assisting the poor, and these institutions, called charities, provide the bulk of charitable giving today."</p>
+                <div class="sigma_author-block">
+                  <h5>
+
+                    Aasha Aron
+
+                  </h5>
+                  <span class="sigma_testimonial-category">Web Designer</span>
+                </div>
+                <div class="sigma_rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="sigma_testimonial">
+              <div class="sigma_testimonial-thumb">
+                <img src="assets/img/home-1/100x100-3.jpg" alt="testimonial">
+              </div>
+              <div class="sigma_testimonial-body">
+                <span class="fas fa-quote-left sigma_testimonial-icon"></span>
+                <p>"There have been examinations of who gives more to charity. One study conducted in the United States found that as a percentage of income."</p>
+                <div class="sigma_author-block">
+                  <h5>
+
+                    Jeff Sied
+
+                  </h5>
+                  <span class="sigma_testimonial-category">Fashion Designer</span>
+                </div>
+                <div class="sigma_rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="sigma_testimonial">
+              <div class="sigma_testimonial-thumb">
+                <img src="assets/img/home-1/100x100-4.jpg" alt="testimonial">
+              </div>
+              <div class="sigma_testimonial-body">
+                <span class="fas fa-quote-left sigma_testimonial-icon"></span>
+                <p>"Studies have also found that individuals who are religious are more likely to give money to charitable organizations and they are also more."</p>
+                <div class="sigma_author-block">
+                  <h5>
+
+                    David prince Kitoko
+
+                  </h5>
+                  <span class="sigma_testimonial-category">Web Developer</span>
+                </div>
+                <div class="sigma_rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--testimonial End-->
+  </div>
+  <!--blog Start-->
+  <div id="section-blog">
+    <div class="section section-padding pt-0">
+      <div class="container">
+        <div class="section-title centered has-element">
+          <h3 class="title">Succefull <span class="primary-color">Donation & foundraising</span></h3>
+          <div class="d-flex align-items-center justify-content-center">
+            <span class="lines"></span>
+            <i class="icon flaticon-solidarity"></i>
+            <span class="lines"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <article class="sigma_post style-3">
+              <div class="sigma_post-thumb">
+                <a href="#">
+                  <img src="assets/img/home-1/charity8.jpg" alt="img">
+                </a>
+              </div>
+              <div class="sigma_post-body">
+                <div class="sigma_post-meta">
+                  <ul>
+                    <li>
+                      <a href="#"><b>Personal</b></a>
+                    </li>
+                    <li>2 min read</li>
+                  </ul>
+                </div>
+                <div class="sigma_post-content">
+                  <h5>
+
+                    <a href="#">Take Your Online Donation to the Next Level!</a>
+
+                  </h5>
+                </div>
+                <div class="sigma_post-meta">
+                  <ul>
+                    <li class="author">
+                      <img src="assets/img/home-1/40x40.jpg" alt="author">
+                      <a href="#"><b>Susan Lopez</b></a>
+                    </li>
+                    <li>
+                      <a href="#">Nov 6, 2022</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <article class="sigma_post style-3">
+              <div class="sigma_post-thumb">
+                <a href="#">
+                  <img src="assets/img/home-1/charity6.jpg" alt="img">
+                </a>
+              </div>
+              <div class="sigma_post-body">
+                <div class="sigma_post-meta">
+                  <ul>
+                    <li>
+                      <a href="#"><b>Personal</b></a>
+                    </li>
+                    <li>3 min read</li>
+                  </ul>
+                </div>
+                <div class="sigma_post-content">
+                  <h5>
+
+                    <a href="#">In Africa a Little Help Can Go a Long Way</a>
+
+                  </h5>
+                </div>
+                <div class="sigma_post-meta">
+                  <ul>
+                    <li class="author">
+                      <img src="assets/img/home-1/40x40-0.jpg" alt="author">
+                      <a href="#"><b>John Helton</b></a>
+                    </li>
+                    <li>
+                      <a href="#">Jan 6, 2022</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <article class="sigma_post style-3">
+              <div class="sigma_post-thumb">
+                <a href="#">
+                  <img src="assets/img/home-1/charity5.jpg" alt="img">
+                </a>
+              </div>
+              <div class="sigma_post-body">
+                <div class="sigma_post-meta">
+                  <ul>
+                    <li>
+                      <a href="#"><b>Personal</b></a>
+                    </li>
+                    <li>5 min read</li>
+                  </ul>
+                </div>
+                <div class="sigma_post-content">
+                  <h5>
+
+                    <a href="#">Providing Clean Water on the Blue Planet</a>
+
+                  </h5>
+                </div>
+                <div class="sigma_post-meta">
+                  <ul>
+                    <li class="author">
+                      <img src="assets/img/home-1/40x40-1.jpg" alt="author">
+                      <a href="#"><b>Maria Andrew</b></a>
+                    </li>
+                    <li>
+                      <a href="#">Oct 3, 2022</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--blog End-->
+  </div>
+  <!--cta Start-->
+  <div id="section-cta">
+    <div class="section p-0">
+      <div class="container-fluid p-0">
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <div class="sigma_cta style-15 text-left">
+              <a href="#">
+                <img src="assets/img/services/660x348.jpg" alt="blog">
+              </a>
+              <div class="sigma_cta-content">
+                <span>Read<br>The Blog</span>
+                <a href="#">View All Posts</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="sigma_cta style-15 text-left">
+              <a href="#">
+                <img src="assets/img/services/660x348-0.jpg" alt="instagram">
+              </a>
+              <div class="sigma_cta-content">
+                <span>Follow Our Store<br>On Instagram</span>
+                <a href="#">@getbowtied</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--cta End-->
+  </div>
+  <!--to-top Start-->
+  <div id="section-to-top">
+    <div class="sigma_top style-2">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <!--to-top End-->
+  </div>
+  <!--footer Start-->
+  <div id="section-footer">
+    <footer class="sigma_footer style-2 pb-0">
+      <div class="container">
+        <div class="sigma_footer-top">
+         <div class="sigma_footer-logo">
+            <img src="assets/img/logo.png" alt="logo">
+          </div>
+          <div class="footer-item">
+            <ul class="sigma_footer-links">
+              
+              <li>
+                <a href="/privacypolicy">Privacy</a>
+              </li>
+              <li>
+                <a href="/about">About</a>
+              </li>
+              <li>
+                <a href="/termsconditions">Terms&conditions</a>
+              </li>
+              <li>
+                <a href="/contact">Contact </a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-item">
+            <div class="form-group mb-0">
+              <select>
+                <option selected>English</option>
+                <option>Spanish</option>
+                <option>French</option>
+                <option>Chinese</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <ul class="sigma_social-icons mt-4 has-border">
+          <li>
+            <a href="https://www.facebook.com/profile.php?id=100090421141929"><i class="fab fa-facebook-f"></i></a>
+          </li>
+          <li>
+            <a href="https://twitter.com/JashanJabz?t=fvYEamqjSyPsuD-ZvhZN3w&s=08"><i class="fab fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/reel/Cp-Olzvo4Si/?igshid=MDJmNzVkMjY"><i class="fab fa-instagram"></i></a>
+          </li>
+        </ul>
+        <div class="sigma_footer-bottom">
+          <div class="sigma_footer-copyright">
+            <p class="mb-0">© Bilodi Charity -
+              <a href="/">2023,</a>
+              Made With Love
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--footer End-->
+  </div>
+  <script src="assets/js/plugins/jquery-3.4.1.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/popper.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/bootstrap.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/jquery.instagramFeed.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/slick.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/imagesloaded.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/jquery.magnific-popup.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/jquery.counterup.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/jquery.inview.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/ion.rangeSlider.min.js" type="text/javascript"></script>
+  <script src="assets/js/plugins/jquery.validate.min.js" type="text/javascript"></script>
+  <script src="assets/js/main.js" type="text/javascript"></script>
+  <script src="assets/functions/mf_form.js" type="text/javascript"></script>
 </body>
+
 </html>
+
+
+
+
+
+

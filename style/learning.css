@@ -1,0 +1,55 @@
+
+
+@media screen and (max-width: 800px){
+
+    #abc{
+        transform: scale(.9);
+        display: flex;
+        flex-wrap: wrap;
+    }
+#abc a{
+font-size: large;
+margin-right: 10px;
+
+}
+#search{
+    transform: scale(.9);
+}
+
+#search input{
+    border: solid rgba(0, 106, 255, 0.559) 2px;
+    font-size: large;
+    padding: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    min-width: 25%;
+    border-radius: 5px;
+    }
+    
+}
+
+@media screen and (min-width: 801px){
+
+    #abc{
+        transform: scale(.9);
+        display: flex;
+        flex-wrap: wrap;
+    }
+#abc a{
+font-size: xx-large;
+margin: 10px;
+
+}
+#search{
+    transform: scale(.9);
+}
+#search input{
+    border: solid rgba(0, 106, 255, 0.559) 2px;
+    font-size: large;
+    padding: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    min-width: 25%;
+    border-radius: 5px;
+    }
+
+
+}

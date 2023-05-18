@@ -1,0 +1,404 @@
+
+@media screen and (max-width: 800px){
+
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;500&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    :root{
+        --bkg: white;
+        --color: rgb(81, 88, 95);
+        --colorB: rgb(74, 190, 206);
+        --main-color: rgb(11, 10, 17);
+        --text-color: rgb(255, 255, 255);
+        --font: 'Nunito', sans-serif;
+        --principal: rgb(247, 210, 4);
+        --head:  rgb(53, 47, 47);
+        --black: black;
+    }
+    .form{
+      width: 100%;
+      height: 500px;
+      padding: 20px;
+      background-color:  rgb(202, 195, 180);
+      border-radius: 5px;
+    
+    }
+
+    #nav-bar{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 99;
+      transition: 1s;
+    }
+    .navigation{
+        background-color: black;
+
+    }
+
+    .link{
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+    }
+    .link a{
+        font-size: 40px;
+        text-decoration: none;
+    }
+    .link button{
+        color: white;
+        font: bolder;
+    }
+    .link button i{
+        font-size: 30px;
+    }
+    .menu-link{
+        position: absolute;
+        text-align: left;
+        width: max-content;
+        right: 0;
+        flex-direction: column;
+        background-color: rgb(0, 132, 255);
+        border-bottom-left-radius: 5px;
+        display: none; 
+        z-index: 99;
+    }
+    .menu-link a {
+        color: rgb(250, 248, 248);
+        font-size: 20px;
+        padding: 15px;
+        text-decoration: none;
+    }
+    .menu-link a:hover{
+        background-color: rgba(6, 13, 19, 0.76);
+        text-align: center;
+    }
+
+
+
+
+    #ymca{
+      background-color: rgba(8, 8, 50, 0.818);
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    #y-note{
+      
+      float: right;
+      padding: 10px;
+      margin-top: 80px;
+      margin-right: 50px;
+      color: red;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    }
+
+    
+  
+  .content{
+    margin-top: 150px;
+    width: 100%;
+    padding: 5px;
+    transform-origin:left right;
+    z-index: 10;
+  }  
+
+  .main-news{
+    width: 100%;
+  
+  }
+  .main-first{
+    border-top: solid green 2px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+  .main-second{
+    border: solid gray 1px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px;
+    padding: 10px;
+  }
+  .main-news-text{
+    transform: scale(.9);
+    text-align: left;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .main-first-news{
+    transform: scale(1);
+  }
+  #MN{
+    text-decoration: none;
+  }
+  #main-head-news{
+    font-size: xx-large;
+    text-align: left;
+    color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+
+  #main-news-description{
+  display: none;
+  color: rgb(93, 93, 93);
+  font-family:Arial, Helvetica, sans-serif;
+
+  }
+
+  #main-img{
+    width: 100%;
+    }
+  .main-first-news img{
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    height: 350px;
+  }
+  .main-first-news #date{
+    color: rgb(105, 105, 105);
+  }
+  .main-first-news #main-news-description{
+    text-decoration: none;
+    color: black;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .main-first-news #author{
+    color: rgb(4, 185, 19);
+    font-weight: bolder;
+  }
+  #searchx{
+    text-align: left;
+    color: rgb(6, 191, 185);
+    border: none;
+    outline: none;
+    background-color: black;
+    font-size: x-large;
+  }
+  
+  #searchx:hover{
+    color:rgb(5, 126, 240)
+    }
+  
+
+  .trends{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transform: scale(.9);
+    
+  }
+  .trends a{
+    color: black;
+  }
+  #prince-news i{
+    font-size: small;
+    color: blue;
+  }
+  
+
+  .similar{
+    display: block;
+    margin: 10px;
+  }
+  #similar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  #img-sim{
+    width: 55%;
+  }
+  #similar-text{
+    width: 40%;
+  }
+  #img-sim img{
+    width: 100%;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    height: 220px;
+    object-fit: cover;
+    object-position: center;
+  }
+  .news-direction{
+    display: none;
+  }
+  #similar-head{
+    font-size: medium;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  #similar-description{
+    display: none;
+    color: gray;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+
+
+
+
+
+
+  .other{
+    display: block;
+    padding: 10px;
+  }
+  #other{
+    display: flex;
+     justify-content: space-between;
+  }
+  .other a{
+    text-decoration: none;
+  }
+  
+  .other a:hover{
+    transform: scale(0.99);
+  }
+  
+  #img-sim{
+    width: 55%;
+  }
+  #other-text{
+    width: 40%;
+  }
+  #img-sim img{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+  }
+  #other-head{
+    font-size: medium;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  #other-description{
+    display: none;
+    color: gray;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+
+
+
+
+
+.all-latest-news{
+padding: 5px;
+}
+  #img-lat{
+    margin-right: 10px;
+  width: 90%;
+  }
+  .all-latest-news a img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+  }
+  .all-latest-news a{
+   display: block;
+   margin: 10px;
+   text-decoration: none;
+  }
+  .all-latest-news a #latest-head{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+    font-size: medium;
+   }
+   .all-latest-news a #latest-date{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(73, 72, 72);
+   }
+   .all-latest-news a #latest-description{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(49, 48, 48);
+    font-weight: 100;
+    display: none;
+   }  
+
+
+
+   .courses{
+    display: flex;
+    flex-wrap: wrap;
+    }
+    .courses a{
+      border: solid gray 1px;
+      padding: 10px;
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+    
+    .learn-zarco{
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: black;
+    }
+    
+    
+.summary{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: rgba(128, 128, 128, 0.527);
+  transform: scale(.9);
+}
+
+
+
+footer {
+  width: 100%;
+  background-color: rgb(3, 29, 3);
+    color: #fff;
+    padding: 50px 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  footer h4 {
+    margin-bottom: 20px;
+  }
+  
+  footer ul li {
+    margin-bottom: 10px;
+  }
+  
+  footer a {
+    color: #fff;
+  }
+  
+  footer form {
+    margin-top: 20px;
+  }
+  
+  footer input {
+    border-radius: 0;
+  }
+  
+  footer .container .row p{
+    transform: scale(.9);
+  }
+
+  #cond{
+    margin-left: 2px;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-around;
+  }
+  #cond a{
+    margin: 5px;
+    color:rgb(233, 234, 232);
+    font-weight: bold;
+  }
+
+
+
+}

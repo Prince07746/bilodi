@@ -1,0 +1,12 @@
+@media screen and (max-width: 800px){
+    footer{
+        background-color: #062c0f;;
+    }
+
+}
+@media screen and (min-width: 801px){
+
+footer{
+    background-color: #062c0f;;
+}
+}

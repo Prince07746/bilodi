@@ -1,0 +1,442 @@
+
+
+
+html::-webkit-scrollbar{
+    width: 3px;
+    }
+    html::-webkit-scrollbar-thumb{
+    background: rgb(1, 105, 27);
+    }
+    html::-webkit-scrollbar-track{
+    background: white;
+    }
+
+    .content {
+        min-height: calc(100% - 50px); 
+        margin-bottom: 80px;
+      }
+
+@media screen and (min-width: 802px){
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --bkg: white;
+    --color: rgb(81, 88, 95);
+    --colorB: rgb(74, 190, 206);
+    --main-color: rgb(11, 10, 17);
+    --text-color: rgb(255, 255, 255);
+    --font: 'Nunito', sans-serif;
+    --principal: rgb(247, 210, 4);
+    --head:  rgb(53, 47, 47);
+    --black: black;
+}
+.form{
+  width: 500px;
+  height: 500px;
+  padding: 20px;
+  background-color:  rgb(190, 185, 175);
+  border-radius: 5px;
+
+}
+#nav-bar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  cursor:pointer;
+}
+.navigation{
+    background-color: black;
+    width: 100%;
+}
+
+.link{
+   
+    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px;
+}
+.link a{
+    font-size: 40px;
+    text-decoration: none;
+}
+.link button{
+    color: white;
+    font: bolder;
+    z-index: 999;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    border: none;
+    outline: none;
+}
+.link button i{
+    color: white;
+    font: bolder;
+    font-size: larger;
+    border: none;
+    outline: none;
+}
+#nav-bar{
+  width: 100%;
+  display: block;
+}
+.menu-link{
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+.menu-link a {
+    color: white;
+    font-size: 20px;
+    margin: 15px;
+    text-decoration: none;
+}
+.menu-link a:hover{
+   color: rgb(5, 126, 240);
+   transition: 1s;
+}
+
+.content{
+  margin-top: 150px;
+  width: 100%;
+}  
+.main-news{
+  display: flex;
+  width: 100%;
+}
+.main-first{
+
+  width: 65%;
+  margin-left: 20px;
+  border-top: solid rgb(5, 126, 240) 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+.main-second{
+  position: absolute;
+  border: solid gray 1px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px;
+  width: 30%;
+  right: 5px;
+  padding: 10px;
+}
+
+.main-first-news{
+  background-color: rgba(128, 128, 128, 0.151);
+}
+#MN{
+  text-decoration: none;
+}
+
+#MN:hover{
+  transform: scale(0.9);
+}
+
+
+#searchx{
+  text-align: left;
+  color: rgb(6, 191, 185);
+  border: none;
+  outline: none;
+  background-color: black;
+  font-size: x-large;
+}
+
+#searchx:hover{
+  color:rgb(5, 126, 240)
+  }
+
+  
+
+#ymca{
+  
+  background-color: rgba(8, 8, 50, 0.818);
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bolder;
+  font-size: x-large;
+}
+#y-note{
+  
+  float: right;
+  padding: 10px;
+  margin-top: 80px;
+  margin-right: 60px;
+  color: red;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.main-news-text{
+  transform: scale(.9);
+  text-align: left;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#main-head-news{
+  text-align: center;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#main-img{
+width: 100%;
+}
+.main-first-news img{
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  width: 100%;
+height: 500px;
+object-fit: cover;
+object-position:top;
+}
+.main-first-news #date{
+  color: rgb(105, 105, 105);
+}
+.main-first-news #author{
+  color: rgb(4, 185, 19);
+  font-weight: bolder;
+}
+.main-first-news #main-news-description{
+  display: none;
+  color: black;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.trends{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: black;
+  transform: scale(.9);
+}
+.trends a{
+  color: black;
+}
+#prince-news i{
+  font-size: small;
+  color: blue;
+}
+
+
+
+
+
+
+.similar{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#similar{
+  display: block;
+  width: 45%;
+}
+.similar a{
+  text-decoration: none;
+}
+.similar a:hover{
+  transform: scale(0.99);
+}
+
+#img-sim{
+  width: 100%;
+}
+
+#img-sim img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+#similar-head{
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#similar-description{
+  display: none;
+  color: gray;
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+
+
+
+.other-x{
+  transform: scale(.9);
+}
+
+.other{
+  transform: scale(.9);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.other a{
+  text-decoration: none;
+}
+
+.other a:hover{
+  transform: scale(0.99);
+}
+
+
+#other{
+  display: block;
+  width: 30%;
+}
+
+#img-sim{
+  width: 100%;
+}
+
+#img-sim img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+#other-head{
+  color: rgb(51, 51, 51);
+ font-size: large;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#other-description{
+  display: none;
+  color: gray;
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+
+
+#img-lat{
+  width: 60%;
+}
+#latest-text{
+  width: 30%;
+  text-align: left;
+}
+.all-latest-news a img{
+  width: 100%;
+  max-width: 500px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  
+}
+.all-latest-news a{
+ display: flex;
+ margin: 10px;
+ text-decoration: none;
+}
+.all-latest-news a:hover{
+  transform: scale(0.99);
+}
+.all-latest-news a #latest-head{
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ color: rgb(51, 51, 51);
+ font-size: large;
+}
+.all-latest-news a #latest-date{
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ color: rgb(73, 72, 72);
+}
+.all-latest-news a #latest-description{
+  display: none;
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ color: rgb(87, 85, 85);
+ font-weight: 100;
+}
+
+
+
+.courses{
+display: flex;
+flex-wrap: wrap;
+}
+.courses a{
+  border: solid gray 1px;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.learn-zarco{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: black;
+}
+.news-direction{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: black;
+}
+
+
+.summary{
+  display: flex;
+  justify-content: space-around;
+  transform: scale(.98);
+  background-color: rgba(128, 128, 128, 0.527);
+}
+
+
+
+
+
+
+footer {
+    background-color: rgb(3, 29, 3);
+    color: #fff;
+    padding: 50px 0;
+    margin-top: auto;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  footer h4 {
+    margin-bottom: 20px;
+    color: rgb(2, 194, 2);
+  }
+  
+  footer ul li {
+    margin-bottom: 10px;
+  }
+  
+  footer a {
+    color: #fff;
+  }
+  
+  footer form {
+    margin-top: 20px;
+  }
+  
+  footer input {
+    border-radius: 0;
+  }
+  #cond{
+     display: flex; 
+     text-align: center;
+     margin-left: 30%;
+  }
+  #cond a{
+    margin: 5px;
+  }
+
+
+}

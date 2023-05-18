@@ -1,156 +1,200 @@
-<!DOCTYPE html><html><head>
-    <title>bilodi/contact</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">  
-<script src="/mainJS/contactJS/contact.js"></script>
-<script src="/comonfile/logbuttons.js"></script>
-<link rel="stylesheet" href="/computercss/contactcss/contact.css">
-<link rel="stylesheet" href="/phonecss/contactcss/contact.css">
-</head>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
 
-<div class="head">
-  <div id="head">
-  <center>
-  <div>
-    <span><h4 class="list-one">Bilodi Charity Organisation</h4></span>
-</div>
-</center>
-<div class="nav-bar" id="nav-bar">
-    <div>
-    <ul>
+    <title>BilodiCharity / contact</title>
         
-        <li><a href="/">Home</a></li>
-        <li><a href="/About">About</a></li>
-        <li><a href="/contact">Contact</a></li>
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="canonical" href="zarcom.herokuapp.com/contact">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="zarcom contact">
+<meta property="og:site_name" content="zarcom">
+<meta property="og:description" content="contact zarcom">
+<meta property="og:image" content="/zarcomImages/zarco.png">
+<meta property="og:url" content="/zarcoImages/zarco.png">
+<meta property="og:locale" content="en_GB">
+
+<meta name="description" content="all information about zarcom and how to contact">
+<meta name="keywords" content="contact zarcom">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<link rel="stylesheet" href="/style/compcss.css">
+<link rel="stylesheet" href="/style/phone.css">
+<link rel="stylesheet" href="/style/news.css">
+<link rel="stylesheet" href="/style/contact.css">
+
+
+<script src="/mainjs/home.js"></script>
+
+    </head>
+    
+    <%- include('search') %>
+
+    <body>
+      <section id="nav-bar">
+        <div class="navigation">
+
+            <div class="link">
+              <a href="/"><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><span style="color: rgb(9, 95, 25);">Bilodi</span>Charity</span></a>
+                 <button class="btn btn-lg" id="menu-lk"><i class="fa fa-bars" id="bt"></i></button>
+            </div>
+        <div class="menu-link" id="menu-link">
+            <a href="/">Home</a>
+            <a href="/contact">Contact us</a>
+            <a href="/about">About us</a>
+        </div>
+        </div>
+        <div id="userInt">
+          <style>
+            #other-description{
+              display: none;
+            }
+            #userInt{
+               width: 100%;
+               background-color: black; 
+               padding-top: 5px;
+                padding-left: 5px;
+                 display: flex; 
+                 justify-content: space-between;
+            }
+            #userInt p{
+            color: white;
+            font-size: medium;
+            padding: 5px;
+            transform: scale(.8);
+            }
+            
+            #fa-user{
+              border: solid white 2px;
+              border-radius: 40%;
+              padding: 10px;
+              background-color: rgb(14, 97, 153);
+            }
+            #fa-arrow-down{
+              color: red;
+            }
+            #account{
+              border: solid rgb(14, 97, 153) 1px;
+              border-radius: 15px;
+              padding: 5px;
+              cursor: pointer;
+              font-size: small;
+              transform: scale(0.9);
+            }
+            #account:hover{
+              transform: scale(0.99);
+              border: solid rgb(4, 191, 35) 1px;
+            }
+            
+          </style>
+          <div style="display: flex;">  
+            <p><i class="fa fa-eye"></i><%= views %></p>
+            <p><i class="fa fa-user"></i><%= users %></p>
+            </div>
+          <div>
+            <p id="account"><i class="fa fa-user" id="fa-user"></i><%= user %> <i class="fa fa-arrow-down" id="fa-arrow-down"></i></p>
+          </div>
+
+        </div>
+      </section>
+        <section class="content">
+
+
+<section class="resou">
+<div class="ctu">
+<h1>Contact Us</h1>
+<p>We'd love to hear from you! Please use the form below to send us your questions, comments, or feedback.</p>
+<p style="color: rgb(0, 149, 0);">Have a question about our content or services? Feel free to reach out to us using the contact information provided below</p>
+</div>
+<div class="mess-info">
+
+<div class="mess">
+  <h4>message</h4>
+  <p>Send a message to BilodiCharity</p>
+  <form action="sendmail" method="post">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="message" name="message" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+</div>
+
+<div class="mess2">
+
+    <ul>
+      <li>kamapala , central region</li>
+      <li>Phone: +256753956857</li>
+      <li>Email: bilodicharity.org@gmail.com</li>
+      <br>
+      <hr>
+      
+      </li>
     </ul>
 </div>
-<div style="display: flex; flex-direction: row;" id="button-top">
-    <form method="get" action="logoutRequest" id="logout">
-      <button class="btn btn-info" type="submit" onclick="logout()">Logout</button>
-      </form>
-    <form method="get" action="donateRequest" id="dn">
-        <button class="btn btn-success" type="submit">Donate</button>
-    </form>
-</div>
-</div>
-</div>
-<div id="cont-text">
-<div>
-<form method="get" action="donateRequest" id="dn2">
-    <button class="btn btn-success" type="submit">Donate</button>
-</form>
-</div>
-</div>
+
 
 </div>
 
-<div class="middle-page">
+</section>
 
-<div id="two-obj">
+        
+           
+        </section>
 
-<div class="reach-to-us">
-<h2>reach out to us</h2>
-<div class="input-messages">
-<!-- user message -->
-<form method="post" action="user-message">
-<input type="text" placeholder="name" id="name-message" name="name" required=""> 
-<br>   
-<input type="email" placeholder="Email address" id="name-message" name="name" required="">
-<br>
-<textarea placeholder="message" required=""></textarea> 
-<div>
-    <button class="btn btn-success" id="btn-submit" type="submit">submit</button>
-</div>
-</form>
-<!-- end of user message -->
-</div>
-</div>
-
-<div class="suporters">
- <h2>Supporter</h2>
- <div id="first-suppoter">
- <img src="/bilodiImages/logo.jpg" id="first-supporter-img" alt="bilodi">
- <p>Bilodi charity</p>
- </div>
- <div id="first-suppoter">
-<img src="/bilodiImages/juuko.jpg" id="first-supporter-img" alt="JUUKO">
-<p>I am JUUKO ABUBAKAR , i decided to stand with these innocent needly children</p>
- </div>
- <div id="first-suppoter">
-<img src="/bilodiImages/david.jpg" id="first-supporter-img" alt="david">
-<p>I am David prince and decided to help with what can to bilodi to help them improve on their services</p>
- </div>
- <div id="first-suppoter">
-<img src="/bilodiImages/samuel.jpg" id="first-supporter-img" alt="samuel">
-<p>I am Samuel and decided to help with what can to bilodi to help them improve on their services</p>
- </div>
-</div>
-
-</div>
-</div>
+        
 
 
-
-
-
-
-
-<div class="footer-page">
-<footer>
-    <div class="footer-container">
-      <div class="footer-left">
-        <h3>Make a Donation</h3>
-        <p>Your donation can help change lives. Every little bit counts.</p>
-        <p>Don't forget that this website is for the BILODI ORGANISATION, a registered nonprofit organization committed to improving the lives of people in need.</p>
-      </div>
-      <div class="footer-right">
-        <form method="get" action="/donateRequest">
-          <button type="submit">Donate Now</button>
-        </form>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-bottom-left">
-        <h4>About Us</h4>
-        <p>BILODI ORGANISATION is a registered nonprofit organization committed to improving the lives of people in need. Learn more about our mission and work.</p>
-        <div style="display: flex; flex-direction: row;">
-          <a href="http://youtube.com/channel/UC3OGVcVKxh4dJ_TCMWgC4Lg" ><i class="fa fa-youtube" style="font-size: 50px; color: green; margin: 10px;"></i></a>
-          <a href="https://www.facebook.com/profile.php?id=100090421141929"><i class="fa fa-facebook" style="font-size: 50px; color: green; margin: 10px;"></i></a>
-          <a href="https://twitter.com/JashanJabz?t=fvYEamqjSyPsuD-ZvhZN3w&s=08"><i class="fa fa-twitter" style="font-size: 50px; color: green; margin: 10px;"></i></a>
-          <a href="https://www.instagram.com/reel/Cp-Olzvo4Si/?igshid=MDJmNzVkMjY="><i class="fa fa-instagram" style="font-size: 50px; color: green; margin: 10px;"></i></a>
-         </div>
-      </div>
-      <div class="footer-bottom-middle">
-        <h4>Get in Touch</h4>
-        <ul>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Support Us</a></li>
-          <li><a href="#">Volunteer</a></li>
-        </ul>
-      </div>
-      <div class="footer-bottom-right">
-        <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Use</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-  <footer class="footer2">
-    <div class="footer2-left">
-      <a href="#">Privacy Policy</a>
-      <span>|</span>
-      <a href="#">Terms of Use</a>
-    </div>
-    <div class="footer2-right">
+       
+        <footer>
+          <div class="container">
+            <div class="row">
+              <p>BILODI ORGANISATION is a registered nonprofit organization committed to improving the lives of people in need. Learn more about our mission and work.</p>
+              <p>Bilodi Charity uses the donated money to provide children in Uganda with basic needs such as food, shelter, and education. With your help, we can ensure that these children have access to the resources they need to grow up healthy and reach their full potential.</p>
+              <div class="col-md-4">
+                <h4>Contact Us</h4>
+                <ul class="list-unstyled">
+                  <li>kamapala , central region</li>
+                  <li>Phone: +256753956857</li>
+                  <li>Email: bilodicharity.org@gmail.com</li>
+                  
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <h4>Follow Us</h4>
+                <div class="list-unstyled" style="display: flex; flex-direction: row;">
+                    <a href="https://www.facebook.com/profile.php?id=100090421141929"><i class="fa fa-youtube" style="font-size: 50px; color: green; margin: 10px;"></i></a>
+                    <a href="https://twitter.com/JashanJabz?t=fvYEamqjSyPsuD-ZvhZN3w&s=08"><i class="fa fa-facebook" style="font-size: 50px; color: green; margin: 10px;"></i></a>
+                    <a href="https://www.instagram.com/reel/Cp-Olzvo4Si/?igshid=MDJmNzVkMjY"><i class="fa fa-twitter" style="font-size: 50px; color: green; margin: 10px;"></i></a>
       
-    </div>
-  </footer>
-</div>
-
-</body>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <h4>message</h4>
+                <p>Send a message to BilodiCharity</p>
+                <form action="sendmail" method="post">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="message" name="message" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div id="cond">
+                    <a href="/about">About</a>
+                    <a href="/privacypolicy">Privacy Policy</a>
+                    <a href="/contact">Contact Us</a>
+                   <a href="/termsconditions">Terms & conditions</a>
+          </div>
+        </footer>        
+    </body>
 </html>

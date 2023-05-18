@@ -1,258 +1,337 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title><%= title %></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BilodiCharity / <%= title %></title>
+        
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="canonical" href="http://zarcom.herokuapp.com/<%= title %>">
+<meta property="og:type" content="website">
+<meta property="og:title" content="<%= title %> ">
+<meta property="og:site_name" content="zarcom">
+<meta property="og:image" content="/zarcomImages/<%= articleimage %> ">
+<meta property="og:description" content="<%= articledescription.replace(/\n/g, '<br>') %> ">
+<meta property="og:url" content=" http://zarcom.herokuapp.com/news/<%= title%> ">
+<meta property="og:locale" content="en_UG">
+<meta name="description" content="<%= articledescription.replace(/\n/g, '<br>') %> ">
+<meta name="keywords" content="technology,computers science,technology tips">
+
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">  
-<script src="/mainJS/aboutJs/about.js"></script>
-<script src="/comonfile/logbuttons.js"></script>
-<link rel="stylesheet" href="/computercss/aboutcss/about.css">
-<link rel="stylesheet" href="/phonecss/aboutcss/about.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<link rel="stylesheet" href="/style/compcss.css">
+<link rel="stylesheet" href="/style/phone.css">
+<link rel="stylesheet" href="/style/news.css">
+
+
+<script src="/mainjs/home.js"></script>
 
     </head>
-    <style>
-      body,html{
-        background-color: white;
-      }
-      #nav-bar{
-    color: white;
-    padding: 8px;
-    opacity: 85%;
-    display: flex;
-    justify-content: space-between;
-    background-color: black;
-  }
-  .news{
-    margin-bottom: 90px;
-    text-align: left;
-    margin: 10px;
-    background-color: white;
-
-  }
-  .head{
-    background-color: black;
-  }
-  .present-news{
-  width: 100%;
-}
-.container0{
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  background-color: white;
-}
-.news0{
-  border-radius: 10px;
-  width: 300px;
-  height: auto;
-  margin: 10px;
-}
-.news0 img{
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-.news0 a{
-  text-decoration: none;
-  color: black;
-}
-
-.news0 h2{
-  color: black;
-  font-weight: 200;
-}
-
-.news0 p{
-  color: black;
-}
-
-.news0 .category{
-  color: white;
-  background-color: green;
-  padding: 10px;
-
-}
-
-
-.news #image-news{
-    width: 100%;
-    object-position: center;
-    object-fit: scale-down; 
-    height: 350px;
-  }
-
-@media screen and (max-width: 800px){
-  .news{
-    margin-bottom: 90px;
-    text-align: left;
-    margin: 10px;
-
-  }
-
-  .news #image-news{
-    width: 100%;
-    object-position: center;
-    object-fit: scale-down;
-    height: auto;
-  }
-
-}
-
-    </style>
-
+    <%- include('search') %>
     <body>
+      <section id="nav-bar">
+        <div class="navigation">
 
-<div class="head">
-  <div id="head">
-  <center>
-    <div>
-      <span class="list-one">Bilodi Charity Organisation</span>
-  </div>
-  </center>
- <div class="nav-bar" id="nav-bar">
-        
-        <div>
-        <ul>
+            <div class="link">
+              <a href="/"><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><span style="color: rgb(9, 95, 25);">Bilodi</span>Charity</span></a>
+                 <button class="btn btn-lg" id="menu-lk"><i class="fa fa-bars" id="bt"></i></button>
+            </div>
+        <div class="menu-link" id="menu-link">
+            <a href="/">Home</a>
+            <a href="/article">Article</a>
+            <button id="searchx">Search</button>
+            <a href="/contact">Contact us</a>
+            <a href="">About us</a>
+            <a href="/<%= linklog %>" style="color: rgb(243, 247, 243); font-weight: bolder;"><button class="btn btn-success"><%= textlog %></button></a>
+        </div>
+        </div>
+        <div id="userInt">
+          <style>
+            #other-description{
+              display: none;
+            }
+            #userInt{
+               width: 100%;
+               background-color: black; 
+               padding-top: 5px;
+                padding-left: 5px;
+                 display: flex; 
+                 justify-content: space-between;
+            }
+            #userInt p{
+            color: white;
+            font-size: medium;
+            padding: 5px;
+            transform: scale(.8);
+            }
             
-            <li><a href="/">Home</a></li>
-            <li><a href="/About">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </div>
-    <div style="display: flex; flex-direction: row;" id="button-top">
-            <form method="get" action="donateRequest" id="dn">
-              <button class="btn btn-success" type="submit">Donate</button>
-          </form>
-    </div>
-    </div>
+            #fa-user{
+              border: solid white 2px;
+              border-radius: 40%;
+              padding: 10px;
+              background-color: rgb(14, 97, 153);
+            }
+            #fa-arrow-down{
+              color: red;
+            }
+            #account{
+              border: solid rgb(14, 97, 153) 1px;
+              border-radius: 15px;
+              padding: 5px;
+              cursor: pointer;
+              font-size: small;
+              transform: scale(0.9);
+            }
+            #account:hover{
+              transform: scale(0.99);
+              border: solid rgb(4, 191, 35) 1px;
+            }
+            
+          </style>
+          <div style="display: flex;">  
+            <p><i class="fa fa-eye"></i><%= views %></p>
+            <p><i class="fa fa-user"></i><%= users %></p>
+            </div>
+          <div>
+            <p id="account"><i class="fa fa-user" id="fa-user"></i><%= user %> <i class="fa fa-arrow-down" id="fa-arrow-down"></i></p>
+          </div>
+
+        </div>
+      </section>
+        <section class="content">
+
+
+
+<div class="news-article">
+
+
+  <style>
+    
+    #bbt{
+      border: none;
+      font-size: x-large;
+      outline: none;
+    }
+    #bbt:hover{
+      color: rgb(4, 200, 4);
+    }
+    @media screen and (max-width: 800px){
+      .text-article{
+      transform: scale(.9);
+    }
+    
+    .comment{
+      border: none;
+      border-radius: 10px;
+      background-color: rgb(195, 194, 194);
+      width: max-content;
+      max-width: 60%;
+     word-wrap: break-word;
+     padding: 5px;
+     margin: 10px;
+     line-height:normal;
+    }
+    #pr{
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+  }
+
+    @media screen and (min-width: 801px){
+      #bbt{
+      border: none;
+      font-size: x-large;
+      outline: none;
+    }
+    #bbt:hover{
+      color: rgb(4, 200, 4);
+    }
+      .comment{
+      border: none;
+      border-radius: 10px;
+      background-color: rgb(195, 194, 194);
+      width: max-content;
+      max-width: 50%;
+     word-wrap: break-word;
+     padding: 10px;
+     margin: 10px;
+     font-size:x-large;
+    }
+    #pr{
+      
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    }
+  </style>
+  <div class="image">
+    <img  src="<%= articleimage %>" crossorigin>
   </div>
-<center>
-<div class="news">
+  <div class="text-article">
+    <h3 id="article-title"><%= articletitle %></h3>
+    <p id="article-date"><%= articledate %></p>
+    <p id="article-description"> <%- articledescription.replaceAll(/\n/g, '<br>') %> </p>
+    <hr>
   
-<img src="/bilodiImages/<%= imageNews %>" id="image-news">
-<h3><%= titleNews %></h3>
-<p><i><%= date %></i></p>
-<h5><%= description %></h5>
-<p><%= more  %></p>
-</div>
-</center>
-
-<section class="present-news">
-  <h2 style="color: green">Fundraising Project Achieves Impactful Results</h2>
-  <div class="container0">
-    <div class="news0" id="news0">
-    <a  href="/news/<%= successfull1_title %>">
-      <img src="/bilodiImages/<%= successfull1_img %>" alt="News 1">
-
-      <h4><%= successfull1_title %></h4>
-      <p><%= successfull1_description %></p>
-      <p class="category"><%= successfull1_category %></p>
-
-    </a>
-    </div>
-
-    <div class="news0" id="news0">
-    <a href="/news/<%= successfull2_title %>">
-      <img src="/bilodiImages/<%= successfull2_img %>" alt="News 2">
-      <h4><%= successfull2_title %></h4>
-      <p><%= successfull2_description %></p>
-      <p class="category"><%= successfull2_category %></p>
-    </a>
-    </div>
-
-    <div class="news0" id="news0">
-    <a  href="/news/<%= successfull3_title %>">
-      <img src="/bilodiImages/<%= successfull3_img %>" alt="News 3">
-      <h4><%= successfull3_title %></h4>
-      <p><%= successfull3_description %></p>
-      <p class="category"><%= successfull3_category %></p>
-    </a>
-    </div>
-
-    <div class="news0" id="news0">
-    <a class="news0" id="news0" href="/news/<%= successfull4_title %>">
-      <img src="/bilodiImages/<%= successfull4_img %>" alt="News 4">
-      <h4><%= successfull4_title %></h4>
-      <p><%= successfull4_description %></p>
-      <p class="category"><%= successfull4_category %></p>
-    </a>
-    </div>
-    <div class="news0" id="news0">
-    <a class="news0" id="news0" href="/news/<%= successfull5_title %>">
-      <img src="/bilodiImages/<%= successfull5_img %>" alt="News 5">
-      <h4><%= successfull5_title %></h4>
-      <p><%= successfull5_description %></p>
-      <p class="category"><%= successfull5_category %></p>
-    </a>
-    </div>
-    <div class="news0" id="news0">
-    <a class="news0" id="news0" href="/news/<%= successfull6_title %>">
-      <img src="/bilodiImages/<%= successfull6_img %>" alt="News 6">
-      <h4><%= successfull6_title %></h4>
-      <p><%= successfull6_description %></p>
-      <p class="category"><%= successfull6_category %></p>
-    </a>
-    </div>
-
-    </div>  
-
-
-</section>
-
-
-<div class="footer-page">
-    <footer>
-        <div class="footer-container">
-          <div class="footer-left">
-            <h3>Make a Donation</h3>
-            <p>Your donation can help change lives. Every little bit counts.</p>
-            <p>Don't forget that this website is for the BILODI ORGANISATION, a registered nonprofit organization committed to improving the lives of people in need.</p>
-          </div>
-          <div class="footer-right">
-            <button>Donate Now</button>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <div class="footer-bottom-left">
-            <h4>About Us</h4>
-            <p>BILODI ORGANISATION is a registered nonprofit organization committed to improving the lives of people in need. Learn more about our mission and work.</p>
-          </div>
-          <div class="footer-bottom-middle">
-            <h4>Get in Touch</h4>
-            <ul>
-                
-          <li><a href="/contact">Contact Us</a></li>
-          <li><a href="/donateRequest">Support Us</a></li>
-          <li><a href="/contact">Volunteer</a></li>
-            </ul>
-          </div>
-          <div class="footer-bottom-right">
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Use</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
-      <footer class="footer2">
-        <div class="footer2-left">
-          <a href="#">Privacy Policy</a>
-          <span>|</span>
-          <a href="#">Terms of Use</a>
-        </div>
-        <div class="footer2-right">
+  <div class="fm">
+  
+  <hr>
+    <style>
+      @media screen and (max-width: 800px) {
         
-        </div>
-      </footer>
-    </div>
+      }
+      @media screen and (min-width: 801px) {
+        .fm{
+          width: 40%;
+          background-color: gray;
+          padding: 40px;
+          border-radius: 10px;
+        }
+        
+      }
+    </style>
+    
 
 
 
 
 
-</body>
+</div>
+
+</div>
+
+        
+          <section class="others-news">
+            <div class="other-x">
+            <h2 id="latest-head" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Latest</h2>
+            <hr style="color:rgb(94, 40, 1); border: solid rgb(94, 40, 1) 2px;">
+            </div>
+            <div class="other">
+              <a href="/news/<%=  title8 %>" id="other">
+                <div id="img-sim">
+              <img src="<%= image8 %>" id="other-img1" alt="<%= title8 %>" crossorigin>
+            </div>
+              <div id="other-text">
+               <h3 id="other-head"><%= title8 %></h3>
+               <p id="other-date"><%= date8 %></p>
+               <p id="other-description"><%= description8 %></p> 
+              </div>
+              </a>
+              <a href="/news/<%= title9 %>" id="other">
+                <div id="img-sim">
+              <img src="<%= image9 %>" id="other-img2" alt="<%= title9 %>" crossorigin>
+            </div>
+              <div id="other-text">
+                <h3 id="other-head"><%= title9 %></h3>
+                <p id="other-date"><%= date9 %></p>
+                <p id="other-description"><%= description9 %></p> 
+              </div>
+              </a>
+              <a href="/news/<%= title10 %>" id="other">
+                <div id="img-sim">
+              <img src="<%= image10 %>" id="other-img3" alt="<%= title10 %>" crossorigin>
+            </div>
+              <div id="other-text">
+                <h3 id="other-head"><%= title10 %></h3>
+                <p id="other-date"><%= date10 %></p>
+                <p id="other-description"><%= description10 %></p> 
+              </div>
+              </a>
+              <a href="/news/<%= title11 %>" id="other">
+                <div id="img-sim">
+              <img src="<%= image11 %>" id="other-img4" alt="<%= title11 %>" crossorigin>
+            </div>
+              <div id="other-text">
+                <h3 id="other-head"><%= title11 %></h3>
+                <p id="other-date"><%= date11 %></p>
+                <p id="other-description"><%= description11 %></p>
+              </div>
+              </a>
+              <a href="/news/<%= title12 %>" id="other">
+                <div id="img-sim">
+              <img src="<%= image12 %>" id="other-img4" alt="<%= title12 %>" crossorigin>
+            </div>
+              <div id="other-text">
+                <h3 id="other-head"><%= title12 %></h3>
+                <p id="other-date"><%= date12 %></p>
+                <p id="other-description"><%= description12 %></p>
+              </div>
+              </a>
+              <a href="/news/<%= title13 %>" id="other">
+                <div id="img-sim">
+              <img src="<%= image13 %>" id="other-img4" alt="<%= title13 %>" crossorigin>
+            </div>
+              <div id="other-text">
+                <h3 id="other-head"><%= title13 %></h3>
+                <p id="other-date"><%= date13 %></p>
+                <p id="other-description"><%= description13 %></p>
+              </div>
+              </a>
+            </div>
+
+            <style>
+              #morex{
+                  display: block;
+                }
+              #more{
+                display: none;
+              }
+            </style>
+            <center style="background-color: rgb(9, 243, 13); transform: scale(.9);" id="<%= m %>">
+          <a href="/morearticle" style=" margin-bottom: 100px;"><h4 style="color: blue">Read more</h4><i class="fa fa-arrow-down"></i></a>
+        </center>
+          </section>  
+        </section>
+
+        
+        <footer>
+          <div class="container">
+            <div class="row">
+              <p>BILODI ORGANISATION is a registered nonprofit organization committed to improving the lives of people in need. Learn more about our mission and work.</p>
+              <p>Bilodi Charity uses the donated money to provide children in Uganda with basic needs such as food, shelter, and education. With your help, we can ensure that these children have access to the resources they need to grow up healthy and reach their full potential.</p>
+              <div class="col-md-4">
+                <h4>Contact Us</h4>
+                <ul class="list-unstyled">
+                  <li>kamapala , central region</li>
+                  <li>Phone: +256753956857</li>
+                  <li>Email: bilodicharity.org@gmail.com</li>
+                  
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <h4>Follow Us</h4>
+                <div class="list-unstyled" style="display: flex; flex-direction: row;">
+                    <a href="https://www.facebook.com/profile.php?id=100090421141929"><i class="fa fa-youtube" style="font-size: 50px; color: green; margin: 10px;"></i></a>
+                    <a href="https://twitter.com/JashanJabz?t=fvYEamqjSyPsuD-ZvhZN3w&s=08"><i class="fa fa-facebook" style="font-size: 50px; color: green; margin: 10px;"></i></a>
+                    <a href="https://www.instagram.com/reel/Cp-Olzvo4Si/?igshid=MDJmNzVkMjY"><i class="fa fa-twitter" style="font-size: 50px; color: green; margin: 10px;"></i></a>
+      
+                </div>
+              </div>
+              <div class="col-md-4">
+                <h4>message</h4>
+                <p>Send a message to BilodiCharity</p>
+                <form action="sendmail" method="post">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="message" name="message" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div id="cond">
+                    <a href="/about">About</a>
+                    <a href="/privacypolicy">Privacy Policy</a>
+                    <a href="/contact">Contact Us</a>
+                   <a href="/termsconditions">Terms & conditions</a>
+          </div>
+        </footer>          
+        
+    </body>
 </html>

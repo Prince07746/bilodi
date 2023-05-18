@@ -1,0 +1,286 @@
+
+<style>
+    @media screen and (max-width: 800px){
+
+        #load {
+            
+            margin-top: 40px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+        #search-results {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      color: white;
+      float: left;
+    }
+    .search-result {
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+    }
+    .search-result:last-of-type {
+      border-bottom: none;
+    }
+    .search-result h3 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    .search-result p {
+      margin: 0;
+      color: #666;
+      font-size: 1.2rem;
+    }
+    #imagesearch{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+
+        .search{
+            
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    min-height: 270px;
+    height: auto;
+    background-color: black;
+    color: rgb(246, 246, 246);
+    z-index: 1000;
+ }
+ #bt{
+    display: flex;
+    width: 100%;
+ }
+ #search-input{
+    padding: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: none;
+    outline: solid rgb(92, 167, 225);
+    width: 170px;
+    border-radius: 5px;
+    margin: 5px;
+
+ }
+ #close{
+       color: red; 
+       font-size: 40px;
+       position: absolute;
+       right: 0px;
+       top: 0px;
+       background-color: white;
+        }
+
+
+        
+    
+    }
+
+    @media screen and (min-width: 800px){
+
+
+        #load {
+            margin-top: 40px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+        #close{
+       color: red; 
+       font-size: 60px;
+       position: absolute;
+       right: 0px;
+       top: 0px;
+       background-color: white;
+        }
+ .search{
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    min-height: 300px;
+    height: auto;
+    padding: 20px;
+    background-color: black;
+    color: rgb(246, 246, 246);
+    z-index: 1000;
+ }
+ #bt{
+    display: flex;
+    width: 100%;
+ }
+ #search-input{
+    padding: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: none;
+    outline: solid rgb(92, 167, 225);
+    width: 290px;
+    border-radius: 5px;
+    margin: 5px;
+
+ }
+
+ #search-results {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      color: white;
+      float: left;
+    }
+    .search-result {
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+    }
+    .search-result:last-of-type {
+      border-bottom: none;
+    }
+    .search-result h3 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    .search-result p {
+      margin: 0;
+      color: #666;
+      font-size: 1.2rem;
+    }
+    #imagesearch{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+   
+  }
+  </style>
+  
+
+<div class="search">
+
+    <i class="fa fa-close" id="close" onclick="hidesearch()"></i>
+ <div class="bt">
+<center id="bt">
+
+  
+    <form id="search-form">
+    <input type="text" id="search-input" name="query" placeholder="Search...">
+    <button type="submit" class="fa fa-search btn btn-info"></button>
+  </form>
+
+</center>
+   
+
+  </div>
+ 
+  <center>
+
+  <div id="x">
+
+  </div>
+
+</center>
+
+  <div id="search-results"></div>
+  
+  </div>
+  
+  
+
+  <script>
+
+var searchb = document.querySelector('.search');
+// searchb.style.display = "none";
+function hidesearch(){
+  searchb.style.display = "none";
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+      var searchForm = document.getElementById('search-form');
+      var searchInput = document.getElementById('search-input');
+      var searchResults = document.getElementById('search-results');
+      
+      searchForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        var searchInput = document.getElementById('search-input');
+        var searchQuery = searchInput.value;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/search');
+        xhr.setRequestHeader('Content-Type','Application/x-www-form-urlencoded');
+        
+        
+        xhr.onloadstart = function() {
+          // show loading spinner
+          var ss = document.getElementById('x');
+          ss.id = "load";
+        };
+        xhr.onloadend = function() {
+          // hide loading spinner
+          var ss = document.getElementById('load');
+          ss.id = "x";
+          
+        };
+
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            // clear previous search results
+            searchResults.innerHTML = '';
+            // iterate over search results and create HTML elements
+            if(data[0]){
+            data.forEach(function(result) {
+              var title = result.title;
+              var image = result.image;
+              var html = '<div class="search-result">' +'<div>'+
+                          `<a href='/news/${title}'><img id='imagesearch' src='${image}'  crossorigin>` +'</div>'+
+                         '<p>' + title + '</p></a>' +
+                         '</div>';
+              searchResults.insertAdjacentHTML('beforeend', html);
+
+
+            });
+          }
+          else if(!data[0]){
+
+
+            var html2 = '<div class="search-result">'+
+                         `<p style='color: white;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;'>` + `no content has match with ${searchQuery}` + '</p>' +
+                         '</div>';
+              searchResults.insertAdjacentHTML('beforeend', html2);
+
+          }
+
+          }
+        };
+        xhr.send(`key1=${searchQuery}&key2='type: search'`);
+      });
+    });
+  </script>

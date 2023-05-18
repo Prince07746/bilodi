@@ -1,0 +1,72 @@
+
+
+@media screen and (max-width: 800px){
+
+.news-article{
+    width: 100%;
+    border-top: solid rgb(4, 103, 202) 4px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.text-article{
+
+    background-color: whitesmoke;
+}
+#article-title{
+  font-size: medium;  
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#article-date{
+color: gray;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#article-description{
+color: black;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.image img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+}
+
+
+}
+
+@media screen and (min-width: 801px){
+
+.news-article{
+    width: 100%;
+    border-top: solid rgb(4, 103, 202) 4px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    transform: scale(.8);
+}
+.text-article{
+background-color: whitesmoke;
+}
+#article-title{
+  font-size: 50px;  
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#article-date{
+color: gray;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#article-description{
+    font-size:xx-large;
+color: rgb(54, 54, 54);
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.image img{
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    object-position: center;
+}
+
+}

@@ -1,486 +1,310 @@
-
-
-// request handeler
-  const express = require('express');
-// data transfer module within the web app
-const bodyParser = require('body-parser');
-// server restart
-
-// EJS
-const ejs = require('ejs');
-// database module
-const mysql = require('mysql');
-const { createPool } = require('generic-pool');
-// payement method
-// sign in and sign up user 
-const signupUser = require('./login and sign up/signup');
-// login  and sign up user 
-const loginUser = require('./login and sign up/login');
-// user and common modif login and loguot button
-const visbButtonLnLo = require('./login-join-logout');
-// user session
-const session = require('express-session');
-const MySQLStore = require('express-mysql-session')(session);
-// files modules
+const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const formidable = require('formidable');
-// readline-sync
-const readlineSync = require('readline-sync');
-
-// html modification
-const cheerio = require('cheerio');
-// middlewares for incresing the speed of the app
+const mysql = require('mysql');
+const nodemailer = require('nodemailer');
+const { createPool } = require('generic-pool');
+const ejs = require('ejs');
 const cache = require('memory-cache');
 const compression = require('compression');
-// middlewares for securty against XSS attacks
 const helmet = require('helmet');
-const uuid = require('uuid');
-
-// Generate a random nonce value
-
-// cross origin
-const cors = require('cors');
-
-// middlewares for securty against Dos attacks
 const rateLimit = require('express-rate-limit');
-const { Console } = require('console');
-// middlewares for protecting sensitive information
+const bodyParser = require('body-parser');
+const signupUser = require('./login and sign up/signup');
+const loginUser = require('./login and sign up/login');
+const toolsKey = require('./tools/keygen');
+const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
 require('dotenv').config();
+const axios = require('axios');
 
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 
 
-// midllewares security
-// express-rate-limit against Dos attacks
+
+
 
 const limiter = rateLimit({
     windowMs: 60 * 60 * 1000,
-    max: 200
+    max: 100
 });
-// ======================================================================================================================
 
 var app = express();
 
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
-});
-const corsOptions = {
-  origin: 'https://js.stripe.com/v3/',
-  optionsSuccessStatus: 200,
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-};
-
-app.use(cors(corsOptions));
-
-
-const nonce = uuid.v4();
-
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
+
+var port = process.env.PORT || 3030;
+
+
+
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 app.use(compression());
 app.use(helmet());
-app.use(express.static(__dirname+'/pagesMain'));
-app.use(express.static(__dirname+'/pageContact'));
-app.use(express.static(__dirname+'/manager'));
-app.use(express.static(path.join(__dirname, 'postpage')));
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static('public'));  
 app.use(express.static(__dirname));
+app.use(express.static(__dirname+'/views'));
 app.use(limiter);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.use((err, req, res, next) => {
-    console.error(err.stack); // Log the error
-    res.status(err.status || 500).json({
-      message: err.message,
-      error: err.stack,
-    });
-  });
+
+
+const cacheMiddleware = function(req, res, next) {
+  const key = '__express__' + encodeURIComponent(req.originalUrl || req.url); // encode the originalUrl value
+  const cacheResponse = cache.get(key);
+  if (cacheResponse) {
+    res.send(cacheResponse);
+    return;
+  }
+
+  res.sendResponse = res.send;
+  res.send = (body) => {
+    cache.put(key, body, 10000);
+    res.sendResponse(body);
+  };
+  next();
+};
 
 
 
-// server port
-var port = process.env.PORT || 3030;
 
-
-// cacheMiddleware to improve speed by using caching to avoid repetitive database queries or expensive computation
-// ===============================================================================================================
-const cacheMiddleware = function(req,res,next){
-    const key = '__express__'+ req.originalUrl || req.url;
-    const cacheResponse = cache.get(key);
-    if(cacheResponse){
-        res.send(cacheResponse);
-        return;
-    }
-
-    res.sendResponse = res.send;
-    res.send = (body) => {
-        cache.put(key, body, 10000);
-        res.sendResponse(body);
-    }
-    next();
-}
-// ======================================================================================================================
-
-
-
-  app.use((req, res, next) => {
-    res.setHeader('Content-Security-Policy', "script-src 'self' https://js.stripe.com");
-    next();
-  });
-
-
- 
-
-
-// DATABASE SETTINGS
-// ======================================================================================================================
-/*
-function createConnection(){
-    const connection = mysql.createConnection({
-      host: `${process.env.host}`,
-      user: `${process.env.user}`,
-      password: `${process.env.password}`,
-      database: `${process.env.database}`
-    });
-      
-       return connection;
-    }
-
-    */
-
-    /*const connection = mysql.createConnection({
-      host: `localhost`,
-      user: `root`,
-      password: `selemani`,
-      database: `codex`
-    });*/
-
-    // Create connection pool
-    const pool = mysql.createPool({
-      host: process.env.host,
-      user: process.env.user,
-      password: process.env.password,
-      database: process.env.database,
-     connectionLimit: 10,
-  timeout: 120000 // 1 minute
-    });
     
-    // Test the connection pool
-    pool.getConnection(function (err, connection) {
-      if (err) {
-        console.error('Error connecting to database:', err);
-        process.exit(1);
+
+    app.use((err, req, res, next) => {
+      if (err.code === 'ENOENT') {
+        console.error('File not found:', err);
+        res.status(404).send('File not found');
       } else {
-        console.log('Database connection established.');
-        connection.release();
+        console.error(err.stack);
+        res.status(500).send('Internal Server Error');
       }
     });
-    
-    // Create session store using connection pool
-    const sessionStore = new MySQLStore({
-      expiration: 86400000,
-      createDatabaseTable: true,
-      schema: {
-        tableName: 'sessions',
-        columnNames: {
-          session_id: 'session_id',
-          expires: 'expires',
-          data: 'data',
-        },
-      },
-    }, pool);
-    
-    // Use session middleware
-    app.use(session({
-      secret: 'mySecretKey',
-      resave: false,
-      saveUninitialized: true,
-      store: sessionStore,
-    }));
-    
-// ====================================================================================================================
 
-// error handling
-// ====================================================================================================================
-app.use((err, req, res, next) => {
-    if (err.code === 'ENOENT') {
-      console.error('File not found:', err);
-      res.status(404).send('File not found');
-    } else {
-      console.error(err.stack);
-      res.status(500).send('Internal Server Error');
+    app.use((req, res, next) => {
+      // Allow requests from any origin
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      
+      // Allow the GET method
+      res.setHeader('Access-Control-Allow-Methods', 'GET');
+      
+      // Allow the Content-Type header
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      
+      // Allow credentials to be sent
+      res.setHeader('Access-Control-Allow-Credentials', true);
+      
+      // Call the next middleware
+      next();
+    });
+
+
+
+function sendtome(Account,message){
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'davidkitoko13@gmail.com',
+        pass: 'e b a j o h d v g m e v u s u z'
     }
+  });
+  let mailOptions = {
+    from: 'davidkitoko13@gmail.com',
+    to: `${Account}`,
+    subject: 'user',
+    html: `${message}`
+  };
+  transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+        console.log(error);
+    }else{
+        console.log('message sent to zarcom : ' + info.response);
+    }
+  });
+}
+
+
+function sendMail(Account,comfirmkey){
+    let transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+          user: 'davidkitoko13@gmail.com',
+          pass: 'e b a j o h d v g m e v u s u z'
+      }
+    });
+    let mailOptions = {
+      from: 'davidkitoko13@gmail.com',
+      to: `${Account}`,
+      subject: 'user',
+      text: `http://zarcom.herokuapp.com/verification/${comfirmkey}`
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+      if(error){
+          console.log(error);
+      }else{
+          console.log('Email verification key sent : ' + info.response);
+      }
+    });
+  }
+
+
+
+
+
+
+app.post('/search', (req, res) => {
+  const query = req.body.key1;
+  console.log(query);
+  
+});
+
+
+  
+
+app.get('/',cacheMiddleware,function(req,res){
+
+  res.setHeader('Content-Security-Policy', "img-src 'self' https://cdn.cnn.com data:;");
+  res.render('home');
+
+});
+
+
+
+
+app.get('/privacypolicy',function(req,res){
+
+  res.setHeader('Content-Security-Policy', "img-src 'self' https://cdn.cnn.com data:;");
+
+    res.render('privacypolicy',{
+      user: ``,
+      views: ``,
+      users: ``,
+      linklog: ``,
+      textlog: ``,
+  
+  
+  
+    });
+    });
+  
+  
+
+
+
+
+app.get('/termsconditions',function(req,res){
+
+  res.setHeader('Content-Security-Policy', "img-src 'self' https://cdn.cnn.com data:;");
+    res.render('terms&conditions',{
+      user: ``,
+      views: ``,
+      users: ``,
+      linklog: ``,
+      textlog: ``,
+  
+  
+  
+    });
+  
+    });
+  
+
+
+
+
+app.get('/contact',cacheMiddleware,function(req,res){
+  
+  res.setHeader('Content-Security-Policy', "img-src 'self' https://cdn.cnn.com data:;");
+  res.render('contact',{
+    user: ``,
+      views: ``,
+      users: ``,
+      linklog: ``,
+      textlog: ``,
+
+  });
   });
 
 
+app.get('/about',cacheMiddleware,function(req,res){
+  res.render('aboutuser',{
+    user: ``,
+      views: ``,
+      users: ``,
+      linklog: ``,
+      textlog: ``,
+  });
+  });
 
 
-
-
-
-
-
-
-
-// page handeling  only GET REQUEST 
-// --------------------------------------------------------------
-// web link starter
-app.get('/env',cacheMiddleware,function(req,res){
-res.send(`${process.env.lastname}`);
-});
-
-
-
-
-
-app.get('/',cacheMiddleware,function(req,res){
-            if(req.session.user){
-              var username = req.session.user.username;
-              var password = req.session.user.passwrd;
-              pool.query(`SELECT * FROM user WHERE username = '${username}' AND passwrd = '${password}' `,function(err, results,fields){
-                if(err) throw err;
-                pool.query(`SELECT * FROM projects ORDER BY id DESC LIMIT 3;`,function(err, resultsProject,fields){
-                if(err) throw err;
-
-                pool.query(`SELECT * FROM successfull ORDER BY id DESC LIMIT 6;`,function(err, resultSuccess,fields){
-                  if(err) throw err;
-                  pool.query(`SELECT * FROM donation ORDER BY id DESC LIMIT 6;`,function(err, resultDonation,fields){
-                    if(err) throw err;
-                res.render('home',{message: `${req.session.user.username}`,account: `User account`,Project1text: `${resultsProject[0].text}`,Project1head: `${resultsProject[0].header}`,Project1description: `${resultsProject[0].description}`,Project2text: `${resultsProject[1].text}`,Project2head: `${resultsProject[1].header}`,Project2description: `${resultsProject[1].description}`,Project3text: `${resultsProject[2].text}`,Project3head: `${resultsProject[2].header}`,Project3description: `${resultsProject[2].description}`,successfull1_img: `${resultSuccess[0].image}`,successfull1_title: `${resultSuccess[0].title}`,successfull1_description: `${resultSuccess[0].description}`,successfull1_date: `${resultSuccess[0].date}`,successfull1_category: `${resultSuccess[0].category}`,successfull2_img: `${resultSuccess[1].image}`,successfull2_title: `${resultSuccess[1].title}`,successfull2_description: `${resultSuccess[1].description}`,successfull2_date: `${resultSuccess[1].date}`,successfull2_category: `${resultSuccess[1].category}`,successfull3_img: `${resultSuccess[2].image}`,successfull3_title: `${resultSuccess[2].title}`,successfull3_description: `${resultSuccess[2].description}`,successfull3_date: `${resultSuccess[2].date}`,successfull3_category: `${resultSuccess[2].category}`,successfull4_img: `${resultSuccess[3].image}`,successfull4_title: `${resultSuccess[3].title}`,successfull4_description: `${resultSuccess[3].description}`,successfull4_date: `${resultSuccess[3].date}`,successfull4_category: `${resultSuccess[3].category}`,successfull5_img: `${resultSuccess[4].image}`,successfull5_title: `${resultSuccess[4].title}`,successfull5_description: `${resultSuccess[4].description}`,successfull5_date: `${resultSuccess[4].date}`,successfull5_category: `${resultSuccess[4].category}`,successfull6_img: `${resultSuccess[5].image}`,successfull6_title: `${resultSuccess[5].title}`,successfull6_description: `${resultSuccess[5].description}`,successfull6_date: `${resultSuccess[5].date}`,successfull6_category: `${resultSuccess[5].category}`, donationNews1_img: `${resultDonation[0].image}`,donationNews1_title: `${resultDonation[0].title}`,donationNews1_description: `${resultDonation[0].description}`,donationNews1_amount: `${resultDonation[0].amount}`, donationNews2_img: `${resultDonation[1].image}`,donationNews2_title: `${resultDonation[1].title}`,donationNews2_description: `${resultDonation[1].description}`,donationNews2_amount: `${resultDonation[1].amount}`,donationNews3_img: `${resultDonation[2].image}`,donationNews3_title: `${resultDonation[2].title}`,donationNews3_description: `${resultDonation[2].description}`,donationNews3_amount: `${resultDonation[2].amount}`,donationNews4_img: `${resultDonation[3].image}`,donationNews4_title: `${resultDonation[3].title}`,donationNews4_description: `${resultDonation[3].description}`,donationNews4_amount: `${resultDonation[3].amount}`,donationNews5_img: `${resultDonation[4].image}`,donationNews5_title: `${resultDonation[4].title}`,donationNews5_description: `${resultDonation[4].description}`,donationNews5_amount: `${resultDonation[4].amount}`,donationNews6_img: `${resultDonation[5].image}`,donationNews6_title: `${resultDonation[5].title}`,donationNews6_description: `${resultDonation[5].description}`,donationNews6_amount: `${resultDonation[5].amount}`, }     );
-                
-                })
-                })
-              })
-              });
-                
-            }else{
-
-                pool.query(`SELECT * FROM projects ORDER BY id DESC LIMIT 3;`,function(err, resultsProject,fields){
-                  if(err) throw err;
-  
-                  pool.query(`SELECT * FROM successfull ORDER BY id DESC LIMIT 6;`,function(err, resultSuccess,fields){
-                    if(err) throw err;
-
-                    pool.query(`SELECT * FROM donation ORDER BY id DESC LIMIT 6;`,function(err, resultDonation,fields){
-                      if(err) throw err;
-                  res.render('homenonuser',{Project1text: `${resultsProject[0].text}`,Project1head: `${resultsProject[0].header}`,Project1description: `${resultsProject[0].description}`,Project2text: `${resultsProject[1].text}`,Project2head: `${resultsProject[1].header}`,Project2description: `${resultsProject[1].description}`,Project3text: `${resultsProject[2].text}`,Project3head: `${resultsProject[2].header}`,Project3description: `${resultsProject[2].description}`,successfull1_img: `${resultSuccess[0].image}`,successfull1_title: `${resultSuccess[0].title}`,successfull1_description: `${resultSuccess[0].description}`,successfull1_date: `${resultSuccess[0].date}`,successfull1_category: `${resultSuccess[0].category}`,successfull2_img: `${resultSuccess[1].image}`,successfull2_title: `${resultSuccess[1].title}`,successfull2_description: `${resultSuccess[1].description}`,successfull2_date: `${resultSuccess[1].date}`,successfull2_category: `${resultSuccess[1].category}`,successfull3_img: `${resultSuccess[2].image}`,successfull3_title: `${resultSuccess[2].title}`,successfull3_description: `${resultSuccess[2].description}`,successfull3_date: `${resultSuccess[2].date}`,successfull3_category: `${resultSuccess[2].category}`,successfull4_img: `${resultSuccess[3].image}`,successfull4_title: `${resultSuccess[3].title}`,successfull4_description: `${resultSuccess[3].description}`,successfull4_date: `${resultSuccess[3].date}`,successfull4_category: `${resultSuccess[3].category}`,successfull5_img: `${resultSuccess[4].image}`,successfull5_title: `${resultSuccess[4].title}`,successfull5_description: `${resultSuccess[4].description}`,successfull5_date: `${resultSuccess[4].date}`,successfull5_category: `${resultSuccess[4].category}`,successfull6_img: `${resultSuccess[5].image}`,successfull6_title: `${resultSuccess[5].title}`,successfull6_description: `${resultSuccess[5].description}`,successfull6_date: `${resultSuccess[5].date}`,successfull6_category: `${resultSuccess[5].category}`, donationNews1_img: `${resultDonation[0].image}`,donationNews1_title: `${resultDonation[0].title}`,donationNews1_description: `${resultDonation[0].description}`,donationNews1_amount: `${resultDonation[0].amount}`, donationNews2_img: `${resultDonation[1].image}`,donationNews2_title: `${resultDonation[1].title}`,donationNews2_description: `${resultDonation[1].description}`,donationNews2_amount: `${resultDonation[1].amount}`,donationNews3_img: `${resultDonation[2].image}`,donationNews3_title: `${resultDonation[2].title}`,donationNews3_description: `${resultDonation[2].description}`,donationNews3_amount: `${resultDonation[2].amount}`,donationNews4_img: `${resultDonation[3].image}`,donationNews4_title: `${resultDonation[3].title}`,donationNews4_description: `${resultDonation[3].description}`,donationNews4_amount: `${resultDonation[3].amount}`,donationNews5_img: `${resultDonation[4].image}`,donationNews5_title: `${resultDonation[4].title}`,donationNews5_description: `${resultDonation[4].description}`,donationNews5_amount: `${resultDonation[4].amount}`,donationNews6_img: `${resultDonation[5].image}`,donationNews6_title: `${resultDonation[5].title}`,donationNews6_description: `${resultDonation[5].description}`,donationNews6_amount: `${resultDonation[5].amount}`, }     );
-                  
-                  })
-                  });
-                });
-  
-
-              
-              
-                
-            }     
-            
-});
-
-
-
-
-// home page get
-app.get('/home',cacheMiddleware,function(req,res){
-
-  if(req.session.user){
-    var username = req.session.user.username;
-    var password = req.session.user.passwrd;
-    pool.query(`SELECT * FROM user WHERE username = '${username}' AND passwrd = '${password}' `,function(err, results,fields){
-      if(err) throw err;
-      pool.query(`SELECT * FROM projects ORDER BY id DESC LIMIT 3;`,function(err, resultsProject,fields){
-      if(err) throw err;
-
-      pool.query(`SELECT * FROM successfull ORDER BY id DESC LIMIT 6;`,function(err, resultSuccess,fields){
-        if(err) throw err;
-        pool.query(`SELECT * FROM donation ORDER BY id DESC LIMIT 6;`,function(err, resultDonation,fields){
-          if(err) throw err;
-      res.render('home',{message: `${req.session.user.username}`,account: `User account`,Project1text: `${resultsProject[0].text}`,Project1head: `${resultsProject[0].header}`,Project1description: `${resultsProject[0].description}`,Project2text: `${resultsProject[1].text}`,Project2head: `${resultsProject[1].header}`,Project2description: `${resultsProject[1].description}`,Project3text: `${resultsProject[2].text}`,Project3head: `${resultsProject[2].header}`,Project3description: `${resultsProject[2].description}`,successfull1_img: `${resultSuccess[0].image}`,successfull1_title: `${resultSuccess[0].title}`,successfull1_description: `${resultSuccess[0].description}`,successfull1_date: `${resultSuccess[0].date}`,successfull1_category: `${resultSuccess[0].category}`,successfull2_img: `${resultSuccess[1].image}`,successfull2_title: `${resultSuccess[1].title}`,successfull2_description: `${resultSuccess[1].description}`,successfull2_date: `${resultSuccess[1].date}`,successfull2_category: `${resultSuccess[1].category}`,successfull3_img: `${resultSuccess[2].image}`,successfull3_title: `${resultSuccess[2].title}`,successfull3_description: `${resultSuccess[2].description}`,successfull3_date: `${resultSuccess[2].date}`,successfull3_category: `${resultSuccess[2].category}`,successfull4_img: `${resultSuccess[3].image}`,successfull4_title: `${resultSuccess[3].title}`,successfull4_description: `${resultSuccess[3].description}`,successfull4_date: `${resultSuccess[3].date}`,successfull4_category: `${resultSuccess[3].category}`,successfull5_img: `${resultSuccess[4].image}`,successfull5_title: `${resultSuccess[4].title}`,successfull5_description: `${resultSuccess[4].description}`,successfull5_date: `${resultSuccess[4].date}`,successfull5_category: `${resultSuccess[4].category}`,successfull6_img: `${resultSuccess[5].image}`,successfull6_title: `${resultSuccess[5].title}`,successfull6_description: `${resultSuccess[5].description}`,successfull6_date: `${resultSuccess[5].date}`,successfull6_category: `${resultSuccess[5].category}`, donationNews1_img: `${resultDonation[0].image}`,donationNews1_title: `${resultDonation[0].title}`,donationNews1_description: `${resultDonation[0].description}`,donationNews1_amount: `${resultDonation[0].amount}`, donationNews2_img: `${resultDonation[1].image}`,donationNews2_title: `${resultDonation[1].title}`,donationNews2_description: `${resultDonation[1].description}`,donationNews2_amount: `${resultDonation[1].amount}`,donationNews3_img: `${resultDonation[2].image}`,donationNews3_title: `${resultDonation[2].title}`,donationNews3_description: `${resultDonation[2].description}`,donationNews3_amount: `${resultDonation[2].amount}`,donationNews4_img: `${resultDonation[3].image}`,donationNews4_title: `${resultDonation[3].title}`,donationNews4_description: `${resultDonation[3].description}`,donationNews4_amount: `${resultDonation[3].amount}`,donationNews5_img: `${resultDonation[4].image}`,donationNews5_title: `${resultDonation[4].title}`,donationNews5_description: `${resultDonation[4].description}`,donationNews5_amount: `${resultDonation[4].amount}`,donationNews6_img: `${resultDonation[5].image}`,donationNews6_title: `${resultDonation[5].title}`,donationNews6_description: `${resultDonation[5].description}`,donationNews6_amount: `${resultDonation[5].amount}`, }     );
-      
-      })
-      })
-    })
-    });
-      
-  }else{
-
-      pool.query(`SELECT * FROM projects ORDER BY id DESC LIMIT 3;`,function(err, resultsProject,fields){
-        if(err) throw err;
-
-        pool.query(`SELECT * FROM successfull ORDER BY id DESC LIMIT 6;`,function(err, resultSuccess,fields){
-          if(err) throw err;
-
-          pool.query(`SELECT * FROM donation ORDER BY id DESC LIMIT 6;`,function(err, resultDonation,fields){
-            if(err) throw err;
-        res.render('homenonuser',{Project1text: `${resultsProject[0].text}`,Project1head: `${resultsProject[0].header}`,Project1description: `${resultsProject[0].description}`,Project2text: `${resultsProject[1].text}`,Project2head: `${resultsProject[1].header}`,Project2description: `${resultsProject[1].description}`,Project3text: `${resultsProject[2].text}`,Project3head: `${resultsProject[2].header}`,Project3description: `${resultsProject[2].description}`,successfull1_img: `${resultSuccess[0].image}`,successfull1_title: `${resultSuccess[0].title}`,successfull1_description: `${resultSuccess[0].description}`,successfull1_date: `${resultSuccess[0].date}`,successfull1_category: `${resultSuccess[0].category}`,successfull2_img: `${resultSuccess[1].image}`,successfull2_title: `${resultSuccess[1].title}`,successfull2_description: `${resultSuccess[1].description}`,successfull2_date: `${resultSuccess[1].date}`,successfull2_category: `${resultSuccess[1].category}`,successfull3_img: `${resultSuccess[2].image}`,successfull3_title: `${resultSuccess[2].title}`,successfull3_description: `${resultSuccess[2].description}`,successfull3_date: `${resultSuccess[2].date}`,successfull3_category: `${resultSuccess[2].category}`,successfull4_img: `${resultSuccess[3].image}`,successfull4_title: `${resultSuccess[3].title}`,successfull4_description: `${resultSuccess[3].description}`,successfull4_date: `${resultSuccess[3].date}`,successfull4_category: `${resultSuccess[3].category}`,successfull5_img: `${resultSuccess[4].image}`,successfull5_title: `${resultSuccess[4].title}`,successfull5_description: `${resultSuccess[4].description}`,successfull5_date: `${resultSuccess[4].date}`,successfull5_category: `${resultSuccess[4].category}`,successfull6_img: `${resultSuccess[5].image}`,successfull6_title: `${resultSuccess[5].title}`,successfull6_description: `${resultSuccess[5].description}`,successfull6_date: `${resultSuccess[5].date}`,successfull6_category: `${resultSuccess[5].category}`, donationNews1_img: `${resultDonation[0].image}`,donationNews1_title: `${resultDonation[0].title}`,donationNews1_description: `${resultDonation[0].description}`,donationNews1_amount: `${resultDonation[0].amount}`, donationNews2_img: `${resultDonation[1].image}`,donationNews2_title: `${resultDonation[1].title}`,donationNews2_description: `${resultDonation[1].description}`,donationNews2_amount: `${resultDonation[1].amount}`,donationNews3_img: `${resultDonation[2].image}`,donationNews3_title: `${resultDonation[2].title}`,donationNews3_description: `${resultDonation[2].description}`,donationNews3_amount: `${resultDonation[2].amount}`,donationNews4_img: `${resultDonation[3].image}`,donationNews4_title: `${resultDonation[3].title}`,donationNews4_description: `${resultDonation[3].description}`,donationNews4_amount: `${resultDonation[3].amount}`,donationNews5_img: `${resultDonation[4].image}`,donationNews5_title: `${resultDonation[4].title}`,donationNews5_description: `${resultDonation[4].description}`,donationNews5_amount: `${resultDonation[4].amount}`,donationNews6_img: `${resultDonation[5].image}`,donationNews6_title: `${resultDonation[5].title}`,donationNews6_description: `${resultDonation[5].description}`,donationNews6_amount: `${resultDonation[5].amount}`, }     );
-        
-        })
-        });
-      });
-
-
-    
-    
-      
-  }
-    
- 
-
-})
-
-
-// contact page get
-app.get('/Contact',cacheMiddleware,function(req,res){
-    if(req.session.user){
-            res.render('contact');
-            req.session.cookie.file = path.join(__dirname,'pageContact','contact.html');
-    }else{
-      res.render('contactnonuser');
-      req.session.cookie.file = path.join(__dirname,'pageContact','contact.html');
-    }
-        
-})
-// about page get
-app.get('/About',cacheMiddleware,function(req,res){
-    if(req.session.user){
-        res.render('about');
-        req.session.cookie.file = 'about.ejs';
-}else{
-   res.render('aboutnonuser');
-}
-    
-});
 
 
 app.get('/news/:id',cacheMiddleware,(req,res) => {
-var search = req.params.id;
 
-pool.query(`SELECT * FROM successfull WHERE title LIKE '${search}' `,function(err,result,fields){
-if(err) throw err;
-
-pool.query(`SELECT * FROM successfull ORDER BY id DESC LIMIT 6;`,function(err, resultSuccess,fields){
-  if(err) throw err;
-res.render('news',{imageNews: `${result[0].image}`,title: `${search}`,titleNews:`${result[0].title}`,date: `${result[0].date}`,description: `${result[0].description}`,more: `${result[0].more}`,successfull1_img: `${resultSuccess[0].image}`,successfull1_title: `${resultSuccess[0].title}`,successfull1_description: `${resultSuccess[0].description}`,successfull1_date: `${resultSuccess[0].date}`,successfull1_category:`${resultSuccess[0].category}`,successfull2_img: `${resultSuccess[1].image}`,successfull2_title:`${resultSuccess[1].title}`,successfull2_description: `${resultSuccess[1].description}`,successfull2_date: `${resultSuccess[1].date}`,successfull2_category: `${resultSuccess[1].category}`,successfull3_img: `${resultSuccess[2].image}`,successfull3_title: `${resultSuccess[2].title}`,successfull3_description: `${resultSuccess[2].description}`,successfull3_date: `${resultSuccess[2].date}`,successfull3_category: `${resultSuccess[2].category}`,successfull4_img: `${resultSuccess[3].image}`,successfull4_title: `${resultSuccess[3].title}`,successfull4_description: `${resultSuccess[3].description}`,successfull4_date: `${resultSuccess[3].date}`,successfull4_category: `${resultSuccess[3].category}`,successfull5_img:`${resultSuccess[4].image}`,successfull5_title: `${resultSuccess[4].title}`,successfull5_description: `${resultSuccess[4].description}`,successfull5_date:`${resultSuccess[4].date}`,successfull5_category: `${resultSuccess[4].category}`,successfull6_img: `${resultSuccess[5].image}`,successfull6_title: `${resultSuccess[5].title}`,successfull6_description: `${resultSuccess[5].description}`,successfull6_date: `${resultSuccess[5].date}`,successfull6_category: `${resultSuccess[5].category}`,})
-})
-})
+  res.setHeader('Content-Security-Policy', "img-src 'self' https://cdn.cnn.com data:;");
+  const search =  decodeURIComponent(req.params.id);
+  
 });
 
+        
 
-app.get('/donation/:id',cacheMiddleware,(req,res) => {
-var search = req.params.id;
-
-pool.query(`SELECT * FROM donation WHERE LOWER(title) LIKE '${search}' `,function(err,result,fields){
-if(err) throw err;
-
-pool.query(`SELECT * FROM successfull ORDER BY id DESC LIMIT 6;`,function(err, resultSuccess,fields){
-  if(err) throw err;
-  const dateNow = new Date();
-  const option = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute:  'numeric',
-    second: 'numeric',
-    timeZone: 'UTC'
-  };
-  const formatDate = dateNow.toLocaleString('en-US',option);
-res.render('news',{imageNews: `${result[0].image}`,title: `${search}`,titleNews: `${result[0].title} ${result[0].amount}$`,date: `${formatDate}`,more: `${result[0].more}`,description: `${result[0].description}`,successfull1_img: `${resultSuccess[0].image}`,successfull1_title: `${resultSuccess[0].title}`,successfull1_description: `${resultSuccess[0].description}`,successfull1_date: `${resultSuccess[0].date}`,successfull1_category: `${resultSuccess[0].category}`,successfull2_img: `${resultSuccess[1].image}`,successfull2_title: `${resultSuccess[1].title}`,successfull2_description: `${resultSuccess[1].description}`,successfull2_date: `${resultSuccess[1].date}`,successfull2_category: `${resultSuccess[1].category}`,successfull3_img: `${resultSuccess[2].image}`,successfull3_title: `${resultSuccess[2].title}`,successfull3_description: `${resultSuccess[2].description}`,successfull3_date: `${resultSuccess[2].date}`,successfull3_category: `${resultSuccess[2].category}`,successfull4_img: `${resultSuccess[3].image}`,successfull4_title: `${resultSuccess[3].title}`,successfull4_description: `${resultSuccess[3].description}`,successfull4_date: `${resultSuccess[3].date}`,successfull4_category: `${resultSuccess[3].category}`,successfull5_img: `${resultSuccess[4].image}`,successfull5_title: `${resultSuccess[4].title}`,successfull5_description: `${resultSuccess[4].description}`,successfull5_date: `${resultSuccess[4].date}`,successfull5_category: `${resultSuccess[4].category}`,successfull6_img: `${resultSuccess[5].image}`,successfull6_title: `${resultSuccess[5].title}`,successfull6_description: `${resultSuccess[5].description}`,successfull6_date: `${resultSuccess[5].date}`,successfull6_category: `${resultSuccess[5].category}`})
-
-})
-});
-});
-
-
-
-// ----------------------------------------------------------------
-// acces form IU interface user
-app.get('/manager',cacheMiddleware,function(req,res){ 
-        if(req.session.user){
-            res.render('webManager');
-        }else{
-            res.send('Unauthorised user');
-        }
-    
-});
-
-
-
-
-
-
-app.get('/signupRequest',function(req,res){
-   res.send(`${signupUser.signup}`);
-
-});
-
-
-app.get('/loginRequest',function(req,res){
-   res.send(`${loginUser.login}`);
-
-});
-
-
-app.get('/logoutRequest', function(req, res) {
-    req.session.destroy(function(err) {
-      if (err) {
-        console.log(err);
-      } else {
-
-        pool.query(`SELECT * FROM projects ORDER BY id DESC LIMIT 3;`,function(err, resultsProject,fields){
-          if(err) throw err;
-
-          pool.query(`SELECT * FROM successfull ORDER BY id DESC LIMIT 6;`,function(err, resultSuccess,fields){
-            if(err) throw err;
-            pool.query(`SELECT * FROM donation ORDER BY id DESC LIMIT 6;`,function(err, resultDonation,fields){
-              if(err) throw err;
-          res.render('homenonuser',{Project1text: `${resultsProject[0].text}`,Project1head: `${resultsProject[0].header}`,Project1description: `${resultsProject[0].description}`,Project2text: `${resultsProject[1].text}`,Project2head: `${resultsProject[1].header}`,Project2description: `${resultsProject[1].description}`,Project3text: `${resultsProject[2].text}`,Project3head: `${resultsProject[2].header}`,Project3description: `${resultsProject[2].description}`,successfull1_img: `${resultSuccess[0].image}`,successfull1_title: `${resultSuccess[0].title}`,successfull1_description: `${resultSuccess[0].description}`,successfull1_date: `${resultSuccess[0].date}`,successfull1_category: `${resultSuccess[0].category}`,successfull2_img: `${resultSuccess[1].image}`,successfull2_title: `${resultSuccess[1].title}`,successfull2_description: `${resultSuccess[1].description}`,successfull2_date: `${resultSuccess[1].date}`,successfull2_category: `${resultSuccess[1].category}`,successfull3_img: `${resultSuccess[2].image}`,successfull3_title: `${resultSuccess[2].title}`,successfull3_description: `${resultSuccess[2].description}`,successfull3_date: `${resultSuccess[2].date}`,successfull3_category: `${resultSuccess[2].category}`,successfull4_img: `${resultSuccess[3].image}`,successfull4_title: `${resultSuccess[3].title}`,successfull4_description: `${resultSuccess[3].description}`,successfull4_date: `${resultSuccess[3].date}`,successfull4_category: `${resultSuccess[3].category}`,successfull5_img: `${resultSuccess[4].image}`,successfull5_title: `${resultSuccess[4].title}`,successfull5_description: `${resultSuccess[4].description}`,successfull5_date: `${resultSuccess[4].date}`,successfull5_category: `${resultSuccess[4].category}`,successfull6_img: `${resultSuccess[5].image}`,successfull6_title: `${resultSuccess[5].title}`,successfull6_description: `${resultSuccess[5].description}`,successfull6_date: `${resultSuccess[5].date}`,successfull6_category: `${resultSuccess[5].category}`,donationNews1_img: `${resultDonation[0].image}`,donationNews1_title: `${resultDonation[0].title}`,donationNews1_description: `${resultDonation[0].description}`,donationNews1_amount: `${resultDonation[0].amount}`, donationNews2_img: `${resultDonation[1].image}`,donationNews2_title: `${resultDonation[1].title}`,donationNews2_description: `${resultDonation[1].description}`,donationNews2_amount: `${resultDonation[1].amount}`,donationNews3_img: `${resultDonation[2].image}`,donationNews3_title: `${resultDonation[2].title}`,donationNews3_description: `${resultDonation[2].description}`,donationNews3_amount: `${resultDonation[2].amount}`,donationNews4_img: `${resultDonation[3].image}`,donationNews4_title: `${resultDonation[3].title}`,donationNews4_description: `${resultDonation[3].description}`,donationNews4_amount: `${resultDonation[3].amount}`,donationNews5_img: `${resultDonation[4].image}`,donationNews5_title: `${resultDonation[4].title}`,donationNews5_description: `${resultDonation[4].description}`,donationNews5_amount: `${resultDonation[4].amount}`,donationNews6_img: `${resultDonation[5].image}`,donationNews6_title: `${resultDonation[5].title}`,donationNews6_description: `${resultDonation[5].description}`,donationNews6_amount: `${resultDonation[5].amount}`,   }     );
           
-          });
-          });
-        });
+
+app.get('/signupRequest',cacheMiddleware,function(req,res){
+  
+  res.setHeader('Content-Security-Policy', "img-src 'self' https://cdn.cnn.com data:;");
+  res.send(`${signupUser.signup}`);
+
+});
+app.get('/loginRequest',function(req,res){
+  
+  res.setHeader('Content-Security-Policy', "img-src 'self' https://cdn.cnn.com data:;");
+  res.send(`${loginUser.login}`);
+
+});
 
 
-
-
-      }
-    });
+app.get('/logoutRequest',cacheMiddleware, function(req, res) {
+  
+  res.setHeader('Content-Security-Policy', "img-src 'self' https://cdn.cnn.com data:;");
+  req.session.destroy(function(err) {
+    if (err) {
+      console.log(err);
+    } else {
+        res.redirect('/');
+    }
   });
+});
 
+app.post('/signup',cacheMiddleware,function(req,res){
+  
+  req.session.reload(function(err){
+  if(err){
+      console.log(err);
+  }
+  
+  const {email,password,username} = req.body;
+  pool1.query(`SELECT * FROM users WHERE email = ?`,[email],function(err, results,fields){
+  if(err) throw err;
 
-
-
-// PAGE HANDLER ONLY POST REQUEST
-
-
-app.post('/signup',function(req,res){
-    req.session.reload(function(err){
-    if(err){
-        console.log(err)
-    }
-    
-    const {email,password} = req.body;
-    pool.query(`SELECT * FROM user WHERE username = ?`,[email],function(err, results,fields){
-    if(err) throw err;
-
-    if(results.length >= 1){
-        res.send(`${signupUser.signupFail}`);
-    }
-    else if(results.length < 1){
-
-    pool.query(`INSERT INTO user (username,passwrd) VALUES ('${email}','${password}')`, function (err, results, fields) {
-        if (err) throw err;
-        res.send(`${loginUser.login}`);
-        req.session.session_id = email;
-      });
+  if(results.length >= 1){
+      res.send(`${signupUser.signupFail}`);
+  }
+  else if(results.length < 1){
+  var key = toolsKey.keyProd;
+  pool1.query(`INSERT INTO users (username,password,email,keyuser,verification) VALUES ('${username}','${password}','${email}','${key}','FALSE')`, function (err, results, fields) {
+      if (err) throw err;
+      sendMail(email,key);
+      res.send(`${loginUser.login}`);
+      req.session.session_id = email;
+    });
 
 }
 console.log('request end=/100');
@@ -491,155 +315,217 @@ console.log('request end=/100');
 
 
 
+app.get('/verification/:id', cacheMiddleware, function(req, res) {
+  const url = encodeURIComponent(req.params.id); // encode the parameter value
 
-
-app.post('/login',function(req,res){
-    
-    const {email,password} = req.body;
-    pool.query(`SELECT * FROM user WHERE username = ?`,[email],function(err, results,fields){
-    if(err) throw err;
-    const user = results[0];
-    if(results.length >= 1){
-        if(results[0].passwrd == `${password}`){
-        req.session.user = user;
-        res.redirect('/');
-        }else{
-            res.send(`${loginUser.loginFail}`);
-        }
+  pool1.query(`SELECT * FROM users WHERE keyuser = '${url}'`, function(err, results, fields) {
+    if (err) throw err;
+    if (results.length >= 1) {
+      if (results[0].verification == "TRUE") {
+        const user = results[0];
+          req.session.user = user;
+          res.redirect('/');
+      } else {
+        pool1.query(`UPDATE users SET verification = 'TRUE' WHERE id = ${results[0].id};`, function(err, result) {
+          if (err) throw err;
+          const user = results[0];
+          req.session.user = user;
+          res.redirect('/');
+          
+        });
+      }
+    } else {
+      res.send('link not found');
     }
-    else if(results.length < 1){
-        if (err) throw err;
-        res.send(`${loginUser.loginFail}`);
-    }
-    console.log('request end=/100');
-      });
+  });
+});
 
-    
+
+app.get('/resendMail',cacheMiddleware,function(req,res){
+
+  res.setHeader('Content-Security-Policy', "img-src 'self' https://cdn.cnn.com data:;");
+  res.send(`${loginUser.loginMail}`);
+
+  });
+  
+
+
+app.post("/sendMailagain",cacheMiddleware,function(req,res){
+var email = req.body.email;
+pool1.query(`SELECT * FROM users WHERE email = '${email}'`,function(err, results,fields){
+  if(err) throw err;
+  if(results.length >= 1){
+  sendMail(email,results[0].keyuser);
+  res.send(`${loginUser.login}`);
+  }else{
+    res.send(`${loginUser.wrongAccount}`);
+  }
+
+});
+
 })
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-// =====================================================================================================================
-// =====================================================================================================================
-
-
-// app news creation from the manager IU interface user
-// ----------------------------------------------------------------------
-app.post('/news',function(req,res){
-
-    var image = req.body.img;
-    var title = req.body.title;
-    var desc = req.body.desc;
-    var category = req.body.category;
-    var more = req.body.more;
-    const query = `
-  INSERT INTO successfull (image, title, description, category, more)
-  VALUES (?, ?, ?, ?, ?)
-`;
-
-const values = [image, title, desc, category, more];
-    
-    pool.query(query,values,function(err,result,fields){
-      if(err) throw err;
-      console.log('news foundaraing save succefully in successfull table');
-      res.render('webManager');
-    })
-    
-        });
-app.post('/donationNews',function(req,res){
-
-    var image = req.body.img;
-    var title = req.body.title;
-    var desc = req.body.desc;
-    var amount = req.body.amount;
-    const more = req.body.more;
-    const query = `
-    INSERT INTO donation (image, title, description, amount, more)
-  VALUES (?, ?, ?, ?, ?)
-`;
-
-const values = [image, title, desc, amount, more];
-
-    pool.query(query,values,function(err,result,fields){
-      if(err) throw err;
-      console.log('news of donation saved succefull in donation table');
-      res.render('webManager');
-    })
-    
-        });
-
-        app.post('/saveProject',function(req,res){
-          const text = req.body.text;
-          const head = req.body.head;
-          const description = req.body.description;
-          const more = req.body.more;
-          const query = `
-          INSERT INTO projects (text, header, description, more)
-        VALUES (?, ?, ?, ?)
-      `;
+app.post('/login',cacheMiddleware,function(req,res){
+  
+  const email = req.body.email;
+  const password = req.body.password;
+  pool1.query(`SELECT * FROM users WHERE email = '${email}'`,function(err, results,fields){
+  if(err) throw err;
+  if(results.length >= 1){
+      if(results[0].password == `${password}` && results[0].verification == 'TRUE'){
+      const user = results[0];
+      req.session.user = user;
+        res.send(`${loginUser.confirm}`);
       
-      const values = [text , head, description, more];
-      
-          pool.query(query,values,function(err,results){
-           if(err) throw err;
-           console.log('project saved');
-           res.render('webManager');
-          })
-         })
-    
-
-
-        
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-
-// payement supprt
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-app.get('/donateRequest',cacheMiddleware,function(req,res){ 
-  if(req.session.user){
-  // res.redirect('https://donate.stripe.com/test_6oE8zzaEm0kb9k49AA')
-    // res.render('donate');
-    res.render('donate');
-
-  }else{
-
-      res.render('donatenonUser');
+      }
+      else if(results[0].password == `${password}` && results[0].verification != 'TRUE'){
+          res.send(`${loginUser.accountNotverified}`);
+      }else{
+        res.send(`${loginUser.loginFail}`);
+      }
   }
+  else if(results.length < 1){
+      if (err) throw err;
+      res.send(`${loginUser.loginFail}`);
+  }
+  console.log('request end=/100');
+    });
 
 });
 
 
+
+app.get('/ymca07746',function(req,res){
+
+  pool3.query(`SELECT * FROM computerscience`,function(err,subject,fields){
+    if(err) throw err;
+  res.render('coursemanager',{
+    user: `manager`,
+    sub: subject
+  });
+
+  });
+
+  
+  });
+  
+
+app.get('/0774630649',function(req,res){
+
+
+res.render('manager',{user: `manager`});
+
+});
+
+
+app.post('/postnews1',function(req,res){
+  
+  const news = {
+image : `/zarcoImages/${req.body.img}`,
+title : `${req.body.title}`,
+category : `${req.body.category}`,
+description : `${req.body.desc}`,
+url : `https://www.zarcom.herokuapp/news/${this.title}`,
+ source : `zarco news ${this.category}`,
+language : 'en',
+country: 'world'
+  }
+
+const dateNow = new Date();
+const option = {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour: 'numeric',
+  minute:  'numeric'
+};
+
+
+
+
+const formatDate = dateNow.toLocaleString('en-US', option);
+// Replace the "%" character in the news title with " percent"
+const titl = news.title.replace("%", " percent");
+const titlx = titl.replace('?',' .');
+const title = titlx.replace(`'`,' .');
+var query = `INSERT INTO news (title, url, source, image, category, language, country, published_at, description,comkey)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)`;
+if(news.image) {
+  var values = [title, news.url, news.source, news.image, news.category, news.language, news.country, formatDate, news.description,codekey];
+  pool1.query(query, values, function(err, result, fields) {
+    if(err) throw err;
+    console.log('Daily news saved');
+  });
+} else {
+  var values = [title, news.url, news.source, `/zarcoImages/bk.png`, news.category, news.language, news.country, formatDate, news.description,codekey];
+  pool1.query(query, values, function(err, result, fields) {
+    if(err) throw err;
+    console.log('Daily news saved');
+  });
+}
+
+
+res.render("manager",{user: `manager`});
+});
+
+
+
+app.post('/sendmail',function(req,res){
+  if(req.session.user){
+  res.redirect('/');
+  var message = req.body.message;
+  sendtome(`davidkitoko13@gmail.com`,`<div style="width: 100%; background-color: gray; color: white; padding: 10px;">From ${req.session.user.username}</div>  ${message}`);
+  }else{
+    
+    res.redirect('/');
+  var message = req.body.message;
+  sendtome(`davidkitoko13@gmail.com`,`
+  <div style="width: 100%; background-color: gray; color: white; padding: 10px;">
+  From Guest
+  </div> 
+  <div style="">
+   ${message}
+   </div>`);
+  }
+
+
+});
+
+
+app.get("/zarcoImages/:id", function(req, res) {
+  const imageUrl = req.params.id;
+  // pool1.query(`SELECT * FROM news WHERE image = '/zarcoImages/${imageUrl}'`, function(err, result, fields) {
+  /*  if (err) throw err;
+
+    // Get the image file path from the result
+    const imagePath = result[0].image;
+
+    // Send the image file as a binary stream to the client
+    res.sendFile(imagePath);
+  });*/
+});
+
+
+
+app.get('/donateRequest',cacheMiddleware,function(req,res){ 
+
+  // res.redirect('https://donate.stripe.com/test_6oE8zzaEm0kb9k49AA')
+    // res.render('donate');
+    res.render('donate');
+
+  
+
+});
 
 
 
 
 app.listen(port,function(err){
     if(err){
-        
-        console.log('server error');
+        console.log('an error in the server');
     }
-    console.log(`server  running at ${port}`);
-    console.log('connect sent=100 bts /  received=100 bts');
-});
-
-
-
-
-
+    console.log(`Server running at ${port}`);
+})

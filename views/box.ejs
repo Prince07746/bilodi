@@ -1,0 +1,125 @@
+<div class="box">
+    <p>
+      By clicking 'Accept Cookies', you consent to the use of all cookies.
+       You can change your cookie settings at any time by clicking at the bottom of the page 'Block cookies'.
+    </p>
+    
+    <div class="bt">
+
+
+    <button id="accept-cookies">Accept</button>
+
+    <button id="reject-cookies">Reject All</button>
+  
+
+  </div>
+  </div>
+  
+  <style>
+    @media screen and (max-width: 800px){
+
+      .box {
+        width: 100%;
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      top: 85%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(.8);
+      cursor: pointer;
+      z-index: 1000;
+      border-top: solid red 5px;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      padding-bottom: 10px;
+      display: none;
+    }
+  
+    .bt{
+      display: flex;
+      justify-content: space-around;
+    }
+    .box #accept-cookies {
+      background-color: #008CBA;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .box #reject-cookies {
+      background-color: #da0404;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    }
+
+    @media screen and (min-width: 800px){
+
+
+    .box {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      top: 90%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      z-index: 1000;
+      border-top: solid red 5px;
+      border-bottom-left-radius: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding-bottom: 10px;
+      display: none;
+    }
+  
+    .box #accept-cookies {
+      background-color: #008CBA;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .box #reject-cookies {
+      background-color: #da0404;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .bt{
+      display: flex;
+      justify-content: center;
+    }
+
+  }
+  </style>
+  
